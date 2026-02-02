@@ -7,12 +7,17 @@
     'use strict';
 
     // Wait for DOM to be ready
-    document.addEventListener('DOMContentLoaded', init);
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
+    }
 
     function init() {
         initScrollReveal();
         initSmoothScroll();
         initHeaderScroll();
+        initMobileNav();
     }
 
     /**
@@ -20,16 +25,26 @@
      * Reveals elements as they enter the viewport
      */
     function initScrollReveal() {
-        const revealElements = document.querySelectorAll('.section');
+        var revealElements = document.querySelectorAll('.section');
         
         if (!revealElements.length) return;
 
-        const revealOnScroll = function() {
-            const windowHeight = window.innerHeight;
-            const revealPoint = 100;
+        // Check for reduced motion preference
+        var prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        
+        if (prefersReducedMotion) {
+            revealElements.forEach(function(element) {
+                element.classList.add('visible');
+            });
+            return;
+        }
+
+        var revealOnScroll = function() {
+            var windowHeight = window.innerHeight;
+            var revealPoint = 80;
 
             revealElements.forEach(function(element) {
-                const elementTop = element.getBoundingClientRect().top;
+                var elementTop = element.getBoundingClientRect().top;
                 
                 if (elementTop < windowHeight - revealPoint) {
                     element.classList.add('visible');
@@ -45,34 +60,49 @@
         // Initial check
         revealOnScroll();
 
-        // Check on scroll
-        window.addEventListener('scroll', revealOnScroll, { passive: true });
+        // Throttled scroll handler
+        var ticking = false;
+        window.addEventListener('scroll', function() {
+            if (!ticking) {
+                window.requestAnimationFrame(function() {
+                    revealOnScroll();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }, { passive: true });
     }
 
     /**
      * Smooth Scroll for Navigation Links
      */
     function initSmoothScroll() {
-        const links = document.querySelectorAll('a[href^="#"]');
+        var links = document.querySelectorAll('a[href^="#"]');
 
         links.forEach(function(link) {
             link.addEventListener('click', function(e) {
-                const href = this.getAttribute('href');
+                var href = this.getAttribute('href');
                 
                 if (href === '#') return;
 
-                const target = document.querySelector(href);
+                var target = document.querySelector(href);
                 
                 if (target) {
                     e.preventDefault();
                     
-                    const headerHeight = document.querySelector('.header').offsetHeight;
-                    const targetPosition = target.offsetTop - headerHeight - 20;
+                    var header = document.querySelector('.header');
+                    var headerHeight = header ? header.offsetHeight : 0;
+                    var targetPosition = target.offsetTop - headerHeight - 20;
 
                     window.scrollTo({
                         top: targetPosition,
                         behavior: 'smooth'
                     });
+
+                    // Update URL without jumping
+                    if (history.pushState) {
+                        history.pushState(null, null, href);
+                    }
                 }
             });
         });
@@ -82,23 +112,41 @@
      * Header Background on Scroll
      */
     function initHeaderScroll() {
-        const header = document.querySelector('.header');
+        var header = document.querySelector('.header');
         
         if (!header) return;
 
-        let lastScroll = 0;
+        var ticking = false;
 
         window.addEventListener('scroll', function() {
-            const currentScroll = window.pageYOffset;
+            if (!ticking) {
+                window.requestAnimationFrame(function() {
+                    var currentScroll = window.pageYOffset || document.documentElement.scrollTop;
 
-            if (currentScroll > 50) {
-                header.style.boxShadow = '0 1px 3px rgba(0, 0, 0, 0.05)';
-            } else {
-                header.style.boxShadow = 'none';
+                    if (currentScroll > 50) {
+                        header.style.boxShadow = '0 1px 3px rgba(0, 0, 0, 0.08)';
+                    } else {
+                        header.style.boxShadow = 'none';
+                    }
+                    ticking = false;
+                });
+                ticking = true;
             }
-
-            lastScroll = currentScroll;
         }, { passive: true });
+    }
+
+    /**
+     * Mobile Navigation - Close on link click
+     */
+    function initMobileNav() {
+        var navLinks = document.querySelectorAll('.nav-links a');
+        
+        navLinks.forEach(function(link) {
+            link.addEventListener('click', function() {
+                // Allow browser to handle navigation
+                // This is mainly for future mobile menu toggle functionality
+            });
+        });
     }
 
 })();

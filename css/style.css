@@ -16,8 +16,8 @@
     --color-accent: #2563eb;
     --color-accent-hover: #1d4ed8;
     --color-border: #e5e5e5;
-    --font-sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-    --font-mono: 'IBM Plex Mono', 'Consolas', monospace;
+    --font-sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-mono: 'IBM Plex Mono', 'Consolas', 'Monaco', monospace;
     --max-width: 720px;
     --spacing-xs: 0.5rem;
     --spacing-sm: 1rem;
@@ -30,6 +30,7 @@
 html {
     scroll-behavior: smooth;
     font-size: 16px;
+    -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -39,6 +40,14 @@ body {
     line-height: 1.7;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
 }
 
 ::selection {
@@ -117,7 +126,8 @@ main {
     left: 0;
     right: 0;
     z-index: 100;
-    background: rgba(250, 250, 250, 0.9);
+    background: rgba(250, 250, 250, 0.92);
+    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--color-border);
 }
@@ -136,6 +146,7 @@ main {
     font-weight: 600;
     color: var(--color-text);
     text-decoration: none;
+    flex-shrink: 0;
 }
 
 .logo:hover {
@@ -153,6 +164,7 @@ main {
     color: var(--color-text-secondary);
     text-decoration: none;
     transition: color 0.2s ease;
+    white-space: nowrap;
 }
 
 .nav-links a:hover {
@@ -377,7 +389,9 @@ main {
 /* ========================================
    Responsive Design
 ======================================== */
-@media (min-width: 640px) {
+
+/* Large screens */
+@media (min-width: 768px) {
     .hero {
         flex-direction: row;
         align-items: center;
@@ -386,6 +400,7 @@ main {
     
     .hero-content {
         flex: 1;
+        max-width: 60%;
     }
     
     .hero-image {
@@ -393,15 +408,22 @@ main {
     }
     
     .profile-photo {
-        width: 220px;
-        height: 220px;
+        width: 200px;
+        height: 200px;
     }
 }
 
-@media (max-width: 639px) {
+/* Tablet */
+@media (max-width: 767px) {
+    :root {
+        --spacing-2xl: 4rem;
+    }
+    
     .hero {
         text-align: center;
-        padding-top: 120px;
+        padding-top: 100px;
+        min-height: auto;
+        padding-bottom: var(--spacing-xl);
     }
     
     .hero-description {
@@ -418,6 +440,11 @@ main {
         order: -1;
     }
     
+    .profile-photo {
+        width: 160px;
+        height: 160px;
+    }
+    
     .nav-links {
         gap: var(--spacing-md);
     }
@@ -425,6 +452,177 @@ main {
     .footer-content {
         flex-direction: column;
         text-align: center;
+    }
+    
+    .skills {
+        justify-content: center;
+    }
+    
+    .project-tags {
+        justify-content: flex-start;
+    }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    :root {
+        --spacing-md: 1rem;
+        --spacing-lg: 1.5rem;
+        --spacing-xl: 2.5rem;
+        --spacing-2xl: 3rem;
+    }
+    
+    html {
+        font-size: 15px;
+    }
+    
+    .nav {
+        padding: var(--spacing-sm);
+    }
+    
+    .nav-links {
+        gap: var(--spacing-sm);
+    }
+    
+    .nav-links a {
+        font-size: 0.85rem;
+    }
+    
+    .hero {
+        padding-top: 90px;
+    }
+    
+    .hero-greeting {
+        font-size: 0.85rem;
+    }
+    
+    .hero-title {
+        font-size: 1.1rem;
+    }
+    
+    .hero-description {
+        font-size: 0.95rem;
+    }
+    
+    .hero-links {
+        flex-direction: column;
+        width: 100%;
+        max-width: 280px;
+        margin: 0 auto;
+    }
+    
+    .link-btn {
+        width: 100%;
+        text-align: center;
+        padding: 0.875rem 1rem;
+    }
+    
+    .profile-photo {
+        width: 140px;
+        height: 140px;
+    }
+    
+    .section-title {
+        font-size: 1rem;
+    }
+    
+    .skill {
+        font-size: 0.75rem;
+        padding: 0.35rem 0.65rem;
+    }
+    
+    .project-title {
+        font-size: 1.1rem;
+    }
+    
+    .project-description {
+        font-size: 0.9rem;
+    }
+    
+    .contact-email {
+        font-size: 1rem;
+        word-break: break-all;
+    }
+    
+    .footer-links {
+        flex-direction: column;
+        gap: var(--spacing-xs);
+    }
+}
+
+/* Extra small screens */
+@media (max-width: 360px) {
+    html {
+        font-size: 14px;
+    }
+    
+    .logo {
+        font-size: 1.25rem;
+    }
+    
+    .nav-links a {
+        font-size: 0.8rem;
+    }
+    
+    .profile-photo {
+        width: 120px;
+        height: 120px;
+    }
+}
+
+/* Landscape mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+    .hero {
+        min-height: auto;
+        padding-top: 80px;
+        padding-bottom: var(--spacing-lg);
+    }
+    
+    .hero-image {
+        order: 0;
+    }
+    
+    .profile-photo {
+        width: 100px;
+        height: 100px;
+    }
+}
+
+/* Hover states only for devices that support hover */
+@media (hover: hover) {
+    .link-btn:hover {
+        color: var(--color-text);
+        border-color: var(--color-text);
+    }
+    
+    .link-btn.primary:hover {
+        background: var(--color-accent);
+        border-color: var(--color-accent);
+    }
+    
+    .profile-photo:hover {
+        filter: grayscale(0%);
+    }
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+    
+    .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+    
+    .profile-photo {
+        transition: none;
+    }
+    
+    .link-btn {
+        transition: none;
     }
 }
 

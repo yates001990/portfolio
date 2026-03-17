@@ -13,7 +13,7 @@
     <style>
         /* Calculator Specific Styles */
         .calculator-container {
-            max-width: 500px;
+            max-width: 600px;
             margin: 2rem auto;
             padding: 2rem;
             background: #f4f4f4;
@@ -21,18 +21,35 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
             color: #333;
         }
+        .service-selection {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 1.5rem;
+        }
+        .service-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
         .calc-group { margin-bottom: 1.5rem; }
         .calc-group label { display: block; margin-bottom: 0.5rem; font-weight: 600; }
-        .calc-group input { width: 100%; padding: 0.8rem; border: 1px solid #ccc; border-radius: 4px; }
+        .calc-group select { width: 100%; padding: 0.8rem; border: 1px solid #ccc; border-radius: 4px; }
         .calc-btn { 
             width: 100%; padding: 1rem; background: #007bff; color: white; 
             border: none; border-radius: 4px; cursor: pointer; font-weight: 600;
+            text-transform: uppercase;
         }
         .calc-btn:hover { background: #0056b3; }
         #calc-result { 
-            margin-top: 1.5rem; padding: 1rem; text-align: center; 
-            font-weight: bold; font-size: 1.2rem; border-radius: 4px; display: none;
+            margin-top: 1.5rem; padding: 1.5rem; text-align: center; 
+            border-radius: 4px; display: none; border: 1px solid #ddd;
+            background: #fff;
         }
+        .result-score { font-size: 2rem; font-weight: bold; color: #007bff; display: block; }
+        .result-label { font-size: 1rem; font-weight: 600; margin-top: 5px; display: block; }
     </style>
 </head>
 <body>
@@ -54,18 +71,10 @@
 
                 <div class="nav-wrapper" id="navWrapper">
                     <ul class="nav-menu">
-                        <li class="nav-item">
-                            <a href="index.html" class="nav-link">
-                                <i class="fas fa-home"></i>
-                                <span>Home</span>
-                            </a>
-                        </li>
-
+                        <li class="nav-item"><a href="index.html" class="nav-link"><i class="fas fa-home"></i> <span>Home</span></a></li>
                         <li class="nav-item nav-item-dropdown">
                             <a href="#" class="nav-link nav-link-dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-info-circle"></i>
-                                <span>About Us</span>
-                                <i class="fas fa-chevron-down dropdown-arrow"></i>
+                                <i class="fas fa-info-circle"></i> <span>About Us</span> <i class="fas fa-chevron-down dropdown-arrow"></i>
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a href="#about" class="dropdown-link">Our Mission</a></li>
@@ -73,12 +82,9 @@
                                 <li><a href="#about" class="dropdown-link">Ethics & Guidelines</a></li>
                             </ul>
                         </li>
-
                         <li class="nav-item nav-item-dropdown">
                             <a href="#" class="nav-link nav-link-dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-shield-alt"></i>
-                                <span>Security Topics</span>
-                                <i class="fas fa-chevron-down dropdown-arrow"></i>
+                                <i class="fas fa-shield-alt"></i> <span>Security Topics</span> <i class="fas fa-chevron-down dropdown-arrow"></i>
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a href="#work" class="dropdown-link">Network Security</a></li>
@@ -86,46 +92,8 @@
                                 <li><a href="#work" class="dropdown-link">Defense Strategies</a></li>
                             </ul>
                         </li>
-
-                        <li class="nav-item nav-item-dropdown">
-                            <a href="#" class="nav-link nav-link-dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-tools"></i>
-                                <span>Resources</span>
-                                <i class="fas fa-chevron-down dropdown-arrow"></i>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#arsenal" class="dropdown-link">Tools & Arsenal</a></li>
-                                <li><a href="#framework" class="dropdown-link">Security Frameworks</a></li>
-                                <li><a href="#framework" class="dropdown-link">Best Practices</a></li>
-                            </ul>
-                        </li>
-
-                        <li class="nav-item nav-item-dropdown">
-                            <a href="#" class="nav-link nav-link-dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-book"></i>
-                                <span>Learning</span>
-                                <i class="fas fa-chevron-down dropdown-arrow"></i>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#resources" class="dropdown-link">Learning Guides</a></li>
-                                <li><a href="#resources" class="dropdown-link">Certifications</a></li>
-                                <li><a href="#resources" class="dropdown-link">Video Tutorials</a></li>
-                            </ul>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="#work" class="nav-link">
-                                <i class="fas fa-blog"></i>
-                                <span>Blog</span>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="#contact" class="nav-link">
-                                <i class="fas fa-envelope"></i>
-                                <span>Contact</span>
-                            </a>
-                        </li>
+                        <li class="nav-item"><a href="#arsenal" class="nav-link"><i class="fas fa-tools"></i> <span>Resources</span></a></li>
+                        <li class="nav-item"><a href="#contact" class="nav-link"><i class="fas fa-envelope"></i> <span>Contact</span></a></li>
                     </ul>
                 </div>
             </div>
@@ -138,10 +106,7 @@
                 <p class="hero-greeting">Welcome to</p>
                 <h1 class="hero-name">CyberHub</h1>
                 <p class="hero-title">Cybersecurity Learning & Resources</p>
-                <p class="hero-description">
-                    Comprehensive cybersecurity education covering security principles, 
-                    best practices, and practical knowledge for professionals and learners.
-                </p>
+                <p class="hero-description">Comprehensive cybersecurity education covering security principles, best practices, and practical knowledge.</p>
                 <div class="hero-links">
                     <a href="#about" class="link-btn">Learn More</a>
                     <a href="#work" class="link-btn">Explore Topics</a>
@@ -156,171 +121,54 @@
         <section id="about" class="section about">
             <h2 class="section-title">About</h2>
             <div class="about-content">
-                <p>
-                    CyberHub is a comprehensive learning resource dedicated to cybersecurity education 
-                    and awareness. We provide in-depth information on security principles, threat analysis, 
-                    and defensive practices for individuals and organizations.
-                </p>
-                <p>
-                    Our mission is to empower professionals and students with the knowledge needed to 
-                    understand, identify, and mitigate security risks in today's digital landscape.
-                </p>
+                <p>CyberHub is a comprehensive learning resource dedicated to cybersecurity education and awareness.</p>
                 <div class="skills">
                     <span class="skill">Network Security</span>
                     <span class="skill">Threat Analysis</span>
-                    <span class="skill">Data Protection</span>
-                    <span class="skill">Security Awareness</span>
                     <span class="skill">Risk Assessment</span>
-                    <span class="skill">Compliance</span>
-                </div>
-            </div>
-        </section>
-
-        <section id="work" class="section work">
-            <h2 class="section-title">Security Topics</h2>
-            <div class="projects">
-                <article class="project">
-                    <div class="project-info">
-                        <h3 class="project-title">Network Security Fundamentals</h3>
-                        <p class="project-description">
-                            Understanding network architecture, firewalls, intrusion detection systems, 
-                            and secure communication protocols. Learn how to protect your organization's 
-                            network infrastructure from unauthorized access.
-                        </p>
-                        <div class="project-tags">
-                            <span>Networking</span>
-                            <span>Firewalls</span>
-                            <span>IDS/IPS</span>
-                        </div>
-                    </div>
-                </article>
-                <article class="project">
-                    <div class="project-info">
-                        <h3 class="project-title">Threat Analysis & Mitigation</h3>
-                        <p class="project-description">
-                            Identify common threats, understand attack vectors, and implement effective 
-                            countermeasures. From malware to social engineering, learn how to recognize 
-                            and respond to security incidents.
-                        </p>
-                        <div class="project-tags">
-                            <span>Threats</span>
-                            <span>Vulnerabilities</span>
-                            <span>Risk Management</span>
-                        </div>
-                    </div>
-                </article>
-            </div>
-        </section>
-
-        <section id="resources" class="section resources">
-            <h2 class="section-title">Learning Resources</h2>
-            <div class="resource-grid">
-                <div class="resource-card">
-                    <div class="resource-icon"><i class="fas fa-book"></i></div>
-                    <h3>Comprehensive Guides</h3>
-                    <p>In-depth tutorials and documentation covering security fundamentals, advanced concepts, and best practices for all skill levels.</p>
-                    <div class="resource-meta">Beginner to Advanced</div>
-                </div>
-                <div class="resource-card">
-                    <div class="resource-icon"><i class="fas fa-graduation-cap"></i></div>
-                    <h3>Certifications</h3>
-                    <p>Information on industry-recognized certifications including CompTIA Security+, CEH, CISSP, and other professional credentials.</p>
-                    <div class="resource-meta">Professional Development</div>
-                </div>
-                <div class="resource-card">
-                    <div class="resource-icon"><i class="fas fa-film"></i></div>
-                    <h3>Video Tutorials</h3>
-                    <p>Step-by-step video content demonstrating security concepts, tool usage, and practical applications in real-world scenarios.</p>
-                    <div class="resource-meta">Visual Learning</div>
-                </div>
-            </div>
-        </section>
-
-        <section id="arsenal" class="section arsenal">
-            <h2 class="section-title">Tools & Arsenal</h2>
-            <div class="arsenal-content">
-                <p class="arsenal-intro">
-                    A curated knowledge base of essential cybersecurity tools and techniques used by professionals 
-                    for penetration testing, vulnerability assessment, and security analysis.
-                </p>
-                <div class="tools-grid">
-                    <div class="tool-item">
-                        <h4 class="tool-name">Network Analysis</h4>
-                        <p class="tool-desc">Nmap, Wireshark, netstat - Tools for network mapping, packet analysis, and connection monitoring.</p>
-                    </div>
-                    <div class="tool-item">
-                        <h4 class="tool-name">Vulnerability Scanning</h4>
-                        <p class="tool-desc">Nessus, OpenVAS, Qualys - Automated systems for identifying security weaknesses and misconfigurations.</p>
-                    </div>
-                    <div class="tool-item">
-                        <h4 class="tool-name">Web Application Testing</h4>
-                        <p class="tool-desc">Burp Suite, Metasploit, OWASP ZAP - Platforms for web security testing and exploitation verification.</p>
-                    </div>
-                    <div class="tool-item">
-                        <h4 class="tool-name">Password & Access</h4>
-                        <p class="tool-desc">John the Ripper, Hashcat, Hydra - Utilities for password cracking and access validation testing.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="framework" class="section framework">
-            <h2 class="section-title">Security Framework</h2>
-            <div class="framework-content">
-                <div class="framework-item">
-                    <div class="framework-number">1</div>
-                    <div class="framework-details">
-                        <h4>Assess</h4>
-                        <p>Evaluate the current security posture through vulnerability scanning, penetration testing, and risk analysis.</p>
-                    </div>
-                </div>
-                <div class="framework-item">
-                    <div class="framework-number">2</div>
-                    <div class="framework-details">
-                        <h4>Identify</h4>
-                        <p>Document findings, classify risks by severity, and prioritize remediation efforts based on organizational impact.</p>
-                    </div>
-                </div>
-                <div class="framework-item">
-                    <div class="framework-number">3</div>
-                    <div class="framework-details">
-                        <h4>Remediate</h4>
-                        <p>Implement fixes, apply patches, and configure security controls to address identified vulnerabilities.</p>
-                    </div>
-                </div>
-                <div class="framework-item">
-                    <div class="framework-number">4</div>
-                    <div class="framework-details">
-                        <h4>Monitor</h4>
-                        <p>Continuously observe security metrics, maintain logs, and update defenses against emerging threats.</p>
-                    </div>
                 </div>
             </div>
         </section>
 
         <section id="risk-calc" class="section">
-            <h2 class="section-title">Risk Assessment Calculator</h2>
+            <h2 class="section-title">Pentest Scoping Calculator</h2>
             <div class="calculator-container">
-                <div class="calc-group">
-                    <label for="asset-value">Asset Value (1-10)</label>
-                    <input type="number" id="asset-value" min="1" max="10" placeholder="e.g. 8">
+                <label style="font-weight: 600; display: block; margin-bottom: 10px;">Select Services:</label>
+                <div class="service-selection">
+                    <label class="service-item"><input type="checkbox" class="pt-svc" data-weight="25"> Web App Pentest</label>
+                    <label class="service-item"><input type="checkbox" class="pt-svc" data-weight="10"> External Network</label>
+                    <label class="service-item"><input type="checkbox" class="pt-svc" data-weight="20"> Internal Infra</label>
+                    <label class="service-item"><input type="checkbox" class="pt-svc" data-weight="30"> Mobile App Audit</label>
+                    <label class="service-item"><input type="checkbox" class="pt-svc" data-weight="15"> Cloud Config</label>
+                    <label class="service-item"><input type="checkbox" class="pt-svc" data-weight="12"> Phishing Sim</label>
+                    <label class="service-item"><input type="checkbox" class="pt-svc" data-weight="8"> Wireless Test</label>
+                    <label class="service-item"><input type="checkbox" class="pt-svc" data-weight="18"> API Security</label>
+                    <label class="service-item"><input type="checkbox" class="pt-svc" data-weight="22"> Active Directory</label>
+                    <label class="service-item"><input type="checkbox" class="pt-svc" data-weight="35"> IoT/Hardware</label>
                 </div>
+
                 <div class="calc-group">
-                    <label for="threat-level">Threat Level (1-10)</label>
-                    <input type="number" id="threat-level" min="1" max="10" placeholder="e.g. 5">
+                    <label for="complexity">Environment Complexity</label>
+                    <select id="complexity">
+                        <option value="1">Standard (1.0x)</option>
+                        <option value="1.5">High (1.5x)</option>
+                        <option value="2">Critical Infrastructure (2.0x)</option>
+                    </select>
                 </div>
-                <button class="calc-btn" onclick="calculateRisk()">Calculate Risk Score</button>
-                <div id="calc-result"></div>
+
+                <button class="calc-btn" onclick="calculatePentestScope()">Generate Estimate</button>
+                
+                <div id="calc-result">
+                    <span style="font-size: 0.8rem; color: #666; text-transform: uppercase;">Estimated Effort Points</span>
+                    <span id="score-output" class="result-score">0</span>
+                    <span id="status-output" class="result-label"></span>
+                </div>
             </div>
         </section>
-
         <section id="contact" class="section contact">
             <h2 class="section-title">Contact</h2>
             <div class="contact-content">
-                <p>
-                    Have questions about cybersecurity or need more information? 
-                    We're here to help. Get in touch with us today.
-                </p>
+                <p>Have questions? Get in touch with us today.</p>
                 <a href="mailto:info@cyberhub.com" class="contact-email">info@cyberhub.com</a>
             </div>
         </section>
@@ -329,39 +177,46 @@
     <footer class="footer">
         <div class="footer-content">
             <p>&copy; 2026 CyberHub. All Rights Reserved.</p>
-            <div class="footer-links">
-                <a href="#about">About</a>
-                <a href="#work">Security Topics</a>
-                <a href="#resources">Learning Resources</a>
-                <a href="#arsenal">Tools & Arsenal</a>
-                <a href="#framework">Security Frameworks</a>
-                <a href="#contact">Contact</a>
-            </div>
         </div>
     </footer>
 
     <script src="js/main.js"></script>
     <script>
-        function calculateRisk() {
-            const asset = document.getElementById('asset-value').value;
-            const threat = document.getElementById('threat-level').value;
+        function calculatePentestScope() {
+            const services = document.querySelectorAll('.pt-svc');
+            const complexity = document.getElementById('complexity').value;
             const resultDiv = document.getElementById('calc-result');
-            
-            if(asset && threat) {
-                const score = asset * threat;
-                let level = "";
-                let color = "";
+            const scoreOut = document.getElementById('score-output');
+            const statusOut = document.getElementById('status-output');
 
-                if(score <= 20) { level = "Low"; color = "#28a745"; }
-                else if(score <= 50) { level = "Medium"; color = "#ffc107"; }
-                else { level = "High"; color = "#dc3545"; }
+            let baseWeight = 0;
+            let selectedCount = 0;
 
-                resultDiv.style.display = "block";
-                resultDiv.style.backgroundColor = color;
-                resultDiv.style.color = (level === "Medium") ? "#333" : "#fff";
-                resultDiv.innerHTML = `Risk Score: ${score} - ${level} Risk`;
+            services.forEach(s => {
+                if(s.checked) {
+                    baseWeight += parseInt(s.getAttribute('data-weight'));
+                    selectedCount++;
+                }
+            });
+
+            if(selectedCount === 0) {
+                alert("Please select at least one service.");
+                return;
+            }
+
+            const finalScore = Math.round(baseWeight * complexity);
+            resultDiv.style.display = "block";
+            scoreOut.innerText = finalScore;
+
+            if(finalScore < 35) {
+                statusOut.innerText = "Small Scope / Rapid Assessment";
+                statusOut.style.color = "#28a745";
+            } else if(finalScore < 85) {
+                statusOut.innerText = "Standard Commercial Engagement";
+                statusOut.style.color = "#ffc107";
             } else {
-                alert("Please enter values for both fields.");
+                statusOut.innerText = "High Complexity / Enterprise Audit";
+                statusOut.style.color = "#dc3545";
             }
         }
     </script>

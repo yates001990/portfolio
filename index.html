@@ -60,6 +60,18 @@
             gap: 10px;
         }
 
+        /* Styling for the new descriptions */
+        .service-details {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-desc {
+            font-size: 0.7rem;
+            color: #888;
+            margin-top: 2px;
+        }
+
         .price-tag {
             color: #28a745;
             font-family: 'IBM Plex Mono', monospace;
@@ -213,35 +225,83 @@
 
                 <div class="service-selection">
                     <label class="service-item">
-                        <div class="service-info"><input type="checkbox" class="pt-svc" data-weight="25" data-price="2500"> Web App</div>
+                        <div class="service-info">
+                            <input type="checkbox" class="pt-svc" data-weight="25" data-price="2500">
+                            <div class="service-details">
+                                <span>Web App</span>
+                                <span class="service-desc">OWASP Top 10 & Logic</span>
+                            </div>
+                        </div>
                         <span class="price-tag">$2,500</span>
                     </label>
                     <label class="service-item">
-                        <div class="service-info"><input type="checkbox" class="pt-svc" data-weight="10" data-price="1500"> External</div>
+                        <div class="service-info">
+                            <input type="checkbox" class="pt-svc" data-weight="10" data-price="1500">
+                            <div class="service-details">
+                                <span>External</span>
+                                <span class="service-desc">Perimeter & IPs</span>
+                            </div>
+                        </div>
                         <span class="price-tag">$1,500</span>
                     </label>
                     <label class="service-item">
-                        <div class="service-info"><input type="checkbox" class="pt-svc" data-weight="20" data-price="3500"> Internal</div>
+                        <div class="service-info">
+                            <input type="checkbox" class="pt-svc" data-weight="20" data-price="3500">
+                            <div class="service-details">
+                                <span>Internal</span>
+                                <span class="service-desc">Network & AD Pivot</span>
+                            </div>
+                        </div>
                         <span class="price-tag">$3,500</span>
                     </label>
                     <label class="service-item">
-                        <div class="service-info"><input type="checkbox" class="pt-svc" data-weight="30" data-price="4000"> Mobile App</div>
+                        <div class="service-info">
+                            <input type="checkbox" class="pt-svc" data-weight="30" data-price="4000">
+                            <div class="service-details">
+                                <span>Mobile App</span>
+                                <span class="service-desc">iOS/Android Binary</span>
+                            </div>
+                        </div>
                         <span class="price-tag">$4,000</span>
                     </label>
                     <label class="service-item">
-                        <div class="service-info"><input type="checkbox" class="pt-svc" data-weight="15" data-price="2000"> Cloud Config</div>
+                        <div class="service-info">
+                            <input type="checkbox" class="pt-svc" data-weight="15" data-price="2000">
+                            <div class="service-details">
+                                <span>Cloud Config</span>
+                                <span class="service-desc">AWS/Azure Audit</span>
+                            </div>
+                        </div>
                         <span class="price-tag">$2,000</span>
                     </label>
                     <label class="service-item">
-                        <div class="service-info"><input type="checkbox" class="pt-svc" data-weight="18" data-price="2200"> API Sec</div>
+                        <div class="service-info">
+                            <input type="checkbox" class="pt-svc" data-weight="18" data-price="2200">
+                            <div class="service-details">
+                                <span>API Sec</span>
+                                <span class="service-desc">Endpoints & Auth</span>
+                            </div>
+                        </div>
                         <span class="price-tag">$2,200</span>
                     </label>
                     <label class="service-item">
-                        <div class="service-info"><input type="checkbox" class="pt-svc" data-weight="22" data-price="4500"> Active Directory</div>
+                        <div class="service-info">
+                            <input type="checkbox" class="pt-svc" data-weight="22" data-price="4500">
+                            <div class="service-details">
+                                <span>Active Directory</span>
+                                <span class="service-desc">Domain Escalation</span>
+                            </div>
+                        </div>
                         <span class="price-tag">$4,500</span>
                     </label>
                     <label class="service-item">
-                        <div class="service-info"><input type="checkbox" class="pt-svc" data-weight="35" data-price="5500"> IoT Hardware</div>
+                        <div class="service-info">
+                            <input type="checkbox" class="pt-svc" data-weight="35" data-price="5500">
+                            <div class="service-details">
+                                <span>IoT Hardware</span>
+                                <span class="service-desc">Firmware & Physical</span>
+                            </div>
+                        </div>
                         <span class="price-tag">$5,500</span>
                     </label>
                 </div>
@@ -255,4 +315,44 @@
                     </select>
                 </div>
 
-                <button
+                <button class="calc-btn">Calculate Estimate</button>
+
+                <div id="calc-result">
+                    <div class="result-grid">
+                        <div class="result-item">
+                            <span class="result-score" id="res-price">$0</span>
+                            <span class="result-label">ESTIMATED COST</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-score" id="res-weight">0</span>
+                            <span class="result-label">COMPLEXITY UNITS</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Simple logic to make the calculate button functional
+        document.querySelector('.calc-btn').addEventListener('click', () => {
+            let total = 0;
+            let weight = 0;
+            const complexity = parseFloat(document.getElementById('complexity').value);
+            
+            document.querySelectorAll('.pt-svc:checked').forEach(item => {
+                total += parseFloat(item.dataset.price);
+                weight += parseFloat(item.dataset.weight);
+            });
+
+            if(total > 0) {
+                document.getElementById('res-price').innerText = '$' + (total * complexity).toLocaleString();
+                document.getElementById('res-weight').innerText = Math.round(weight * complexity);
+                document.getElementById('calc-result').style.display = 'block';
+            } else {
+                alert('Please select at least one service.');
+            }
+        });
+    </script>
+</body>
+</html>

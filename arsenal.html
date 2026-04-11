@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>(function(){var t=localStorage.getItem("nexusTheme");if(t){document.documentElement.setAttribute("data-theme",t)}})()</script>
+    <meta name="description" content="Searchable tool syntax prototype for Nexus Red Team Portal.">
+    <title>Nexus Red Team Portal | The Arsenal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="arsenal">
+    <header class="site-header">
+        <div class="container nav-shell">
+            <a class="brand" href="index.html">
+                <span class="brand-mark">NR</span>
+                <span class="brand-copy"><strong>Nexus Red Team</strong><span>Portal Prototype</span></span>
+            </a>
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="siteNav">
+                <span></span><span></span><span></span>
+            </button>
+            <nav class="site-nav" id="siteNav" aria-label="Primary">
+                <a href="index.html">Dashboard</a>
+                <a href="about.html">About</a>
+                <div class="nav-dropdown">
+                    <button class="nav-dropdown-toggle" type="button" aria-expanded="false">
+                        Operations
+                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                    <div class="nav-dropdown-menu">
+                        <a href="arsenal.html">Arsenal</a>
+                        <a href="report.html">Breach Report</a>
+                        <a href="phish-lab.html">Phish-Lab</a>
+                        <a href="admin-logs.html">Admin Logs</a>
+                    </div>
+                </div>
+                <a href="applications.html">Applications</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-hero">
+            <div class="container">
+                <div class="arsenal-hero-layout">
+                    <div>
+                        <p class="eyebrow">The Arsenal</p>
+                        <h1>Searchable tool syntax and command reference.</h1>
+                        <p class="lead">The requirements document describes a SQL-backed tool database. This prototype simulates that experience with a JavaScript-powered search engine that filters 12 tools across six categories in real time.</p>
+                        <div class="arsenal-stats">
+                            <div class="arsenal-stat"><strong>12</strong><span>Tools indexed</span></div>
+                            <div class="arsenal-stat"><strong>6</strong><span>Categories</span></div>
+                            <div class="arsenal-stat"><strong>4</strong><span>Risk levels</span></div>
+                        </div>
+                    </div>
+                    <div class="arsenal-search-panel">
+                        <div class="search-wrap">
+                            <label class="search-label" for="arsenal-search">Search tools, categories, tags, or risk levels</label>
+                            <input class="search-input" id="arsenal-search" type="search" data-arsenal-input placeholder="Try &quot;nmap&quot;, &quot;web&quot;, &quot;high&quot;, or &quot;passwords&quot;">
+                        </div>
+                        <div class="arsenal-filters">
+                            <button class="filter-chip is-active" type="button" data-arsenal-filter="All">All</button>
+                            <button class="filter-chip" type="button" data-arsenal-filter="Recon">Recon</button>
+                            <button class="filter-chip" type="button" data-arsenal-filter="Web">Web</button>
+                            <button class="filter-chip" type="button" data-arsenal-filter="Access">Access</button>
+                            <button class="filter-chip" type="button" data-arsenal-filter="Database">Database</button>
+                            <button class="filter-chip" type="button" data-arsenal-filter="Internal">Internal</button>
+                            <button class="filter-chip" type="button" data-arsenal-filter="Exploitation">Exploitation</button>
+                        </div>
+                        <p class="arsenal-counter" data-arsenal-count>12 tools found</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="tool-grid" data-arsenal-list></div>
+            </div>
+        </section>
+
+        <section class="section section-alt">
+            <div class="container">
+                <div class="section-heading">
+                    <p class="eyebrow">How It Works</p>
+                    <h2>A prototype that mirrors the planned SQL-backed workflow</h2>
+                </div>
+                <div class="feature-grid">
+                    <article class="feature-card">
+                        <span class="feature-kicker">Step 1</span>
+                        <h3>Search or filter</h3>
+                        <p>Type a keyword or click a category to instantly narrow down the tool database to what you need.</p>
+                    </article>
+                    <article class="feature-card">
+                        <span class="feature-kicker">Step 2</span>
+                        <h3>Review command syntax</h3>
+                        <p>Each card shows the tool name, purpose, risk level, example command, and searchable tags.</p>
+                    </article>
+                    <article class="feature-card">
+                        <span class="feature-kicker">Step 3</span>
+                        <h3>Copy and execute</h3>
+                        <p>In the future backend version, commands will be pulled from a MySQL tools table. The interface stays the same.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer"><div class="container footer-grid"><div><strong>Nexus Red Team Portal</strong><p>Searchable tool syntax preview.</p></div><div class="footer-links"><a href="report.html">Report Form</a><a href="admin-logs.html">Admin Logs</a><a href="applications.html">Applications</a></div></div></footer>
+    <script src="js/main.js"></script>
+</body>
+</html>

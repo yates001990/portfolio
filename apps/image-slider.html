@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>(function(){var t=localStorage.getItem("nexusTheme");if(t){document.documentElement.setAttribute("data-theme",t)}})()</script>
+    <meta name="description" content="Auto image slider integrated into Nexus Red Team Portal.">
+    <title>Nexus Red Team Portal | Auto Image Slider</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body data-page="applications">
+    <header class="site-header">
+        <div class="container nav-shell">
+            <a class="brand" href="../index.html">
+                <span class="brand-mark">NR</span>
+                <span class="brand-copy"><strong>Nexus Red Team</strong><span>Portal Prototype</span></span>
+            </a>
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="siteNav">
+                <span></span><span></span><span></span>
+            </button>
+            <nav class="site-nav" id="siteNav" aria-label="Primary">
+                <a href="../index.html">Dashboard</a>
+                <a href="../about.html">About</a>
+                <div class="nav-dropdown">
+                    <button class="nav-dropdown-toggle" type="button" aria-expanded="false">
+                        Operations
+                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                    <div class="nav-dropdown-menu">
+                        <a href="../arsenal.html">Arsenal</a>
+                        <a href="../report.html">Breach Report</a>
+                        <a href="../phish-lab.html">Phish-Lab</a>
+                        <a href="../admin-logs.html">Admin Logs</a>
+                    </div>
+                </div>
+                <a href="../applications.html">Applications</a>
+                <a href="../contact.html">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-hero">
+            <div class="container two-column">
+                <div>
+                    <p class="eyebrow">Application Demo</p>
+                    <h1>Auto Image Slider With Controls</h1>
+                    <p class="lead">This slider uses four personal images from the project folder, includes forward and backward navigation, rotates automatically, and adapts to smaller screens.</p>
+                    <div class="tag-row"><span class="tag">Autoplay</span><span class="tag">Controls</span><span class="tag">Responsive</span><span class="tag">Thumbnail Navigation</span></div>
+                </div>
+                <div class="slider-shell" data-slider>
+                    <div class="slider-stage">
+                        <figure class="slide is-active">
+                            <img src="../images/Image 1.jpeg" alt="Portfolio image one displayed in the slider">
+                            <figcaption class="slide-caption"><strong>Field Session</strong><p>Image 1 from the personal portfolio set.</p></figcaption>
+                        </figure>
+                        <figure class="slide">
+                            <img src="../images/Image 2.jpeg" alt="Portfolio image two displayed in the slider">
+                            <figcaption class="slide-caption"><strong>Operations Snapshot</strong><p>Image 2 from the personal portfolio set.</p></figcaption>
+                        </figure>
+                        <figure class="slide">
+                            <img src="../images/Image 3.jpeg" alt="Portfolio image three displayed in the slider">
+                            <figcaption class="slide-caption"><strong>Analyst Workspace</strong><p>Image 3 from the personal portfolio set.</p></figcaption>
+                        </figure>
+                        <figure class="slide">
+                            <img src="../images/Image 4.jpeg" alt="Portfolio image four displayed in the slider">
+                            <figcaption class="slide-caption"><strong>Mission Review</strong><p>Image 4 from the personal portfolio set.</p></figcaption>
+                        </figure>
+                    </div>
+                    <div class="slider-controls">
+                        <button type="button" data-slider-prev>Previous</button>
+                        <span class="chip" data-slider-status>Slide 1 of 4</span>
+                        <button type="button" data-slider-next>Next</button>
+                    </div>
+                    <div class="slider-thumbs">
+                        <button class="thumb-button is-active" type="button">01</button>
+                        <button class="thumb-button" type="button">02</button>
+                        <button class="thumb-button" type="button">03</button>
+                        <button class="thumb-button" type="button">04</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer"><div class="container footer-grid"><div><strong>Nexus Red Team Portal</strong><p>Auto image slider assignment integration.</p></div><div class="footer-links"><a href="../applications.html">Back to Applications</a><a href="miles-per-gallon.html">MPG Demo</a><a href="readiness-assessment.html">Readiness Demo</a></div></div></footer>
+    <script src="../js/main.js"></script>
+</body>
+</html>

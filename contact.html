@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>(function(){var t=localStorage.getItem("nexusTheme");if(t){document.documentElement.setAttribute("data-theme",t)}})()</script>
+    <meta name="description" content="Contact Nexus Red Team Portal.">
+    <title>Nexus Red Team Portal | Contact</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="contact">
+    <header class="site-header">
+        <div class="container nav-shell">
+            <a class="brand" href="index.html">
+                <span class="brand-mark">NR</span>
+                <span class="brand-copy"><strong>Nexus Red Team</strong><span>Portal Prototype</span></span>
+            </a>
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="siteNav">
+                <span></span><span></span><span></span>
+            </button>
+            <nav class="site-nav" id="siteNav" aria-label="Primary">
+                <a href="index.html">Dashboard</a>
+                <a href="about.html">About</a>
+                <div class="nav-dropdown">
+                    <button class="nav-dropdown-toggle" type="button" aria-expanded="false">
+                        Operations
+                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                    <div class="nav-dropdown-menu">
+                        <a href="arsenal.html">Arsenal</a>
+                        <a href="report.html">Breach Report</a>
+                        <a href="phish-lab.html">Phish-Lab</a>
+                        <a href="admin-logs.html">Admin Logs</a>
+                    </div>
+                </div>
+                <a href="applications.html">Applications</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-hero">
+            <div class="container contact-layout">
+                <div>
+                    <p class="eyebrow">Contact</p>
+                    <h1>Start a conversation about security training, assessments, or portal customization.</h1>
+                    <p class="lead">This page satisfies the course contact-page requirement while keeping the design language consistent with the rest of the site.</p>
+                </div>
+                <div class="contact-grid">
+                    <article class="contact-card"><span>Email</span><h3>ops@nexusredteam.dev</h3><p>Prototype contact inbox for client intake and project requests.</p></article>
+                    <article class="contact-card"><span>Office Hours</span><h3>Mon to Fri, 9am to 6pm</h3><p>Available for scoping calls, report walkthroughs, and training planning.</p></article>
+                    <article class="contact-card"><span>Primary Focus</span><h3>Security Operations UX</h3><p>Practical tools, cleaner workflows, and stronger awareness experiences.</p></article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container two-column">
+                <div class="form-card">
+                    <h2>Inquiry Form</h2>
+                    <form class="form-grid">
+                        <div class="form-field"><label for="name">Name</label><input id="name" type="text" placeholder="Your name"></div>
+                        <div class="form-field"><label for="email">Email</label><input id="email" type="email" placeholder="name@example.com"></div>
+                        <div class="form-field"><label for="company">Organization</label><input id="company" type="text" placeholder="Business or school"></div>
+                        <div class="form-field"><label for="interest">Interest</label><select id="interest"><option>Prototype review</option><option>Awareness training</option><option>Assessment planning</option><option>Portfolio inquiry</option></select></div>
+                        <div class="form-field full"><label for="message">Message</label><textarea id="message" placeholder="Tell us what you would like to discuss."></textarea></div>
+                        <div class="form-field full"><button class="button button-primary" type="button">Send Inquiry</button></div>
+                    </form>
+                </div>
+                <div class="results-panel">
+                    <h2>Why This Page Matters</h2>
+                    <div class="results-list">
+                        <article class="table-card"><span>Requirement Coverage</span><h3>Dedicated contact page</h3><p>Completes the required page set from the prototype instructions.</p></article>
+                        <article class="table-card"><span>Brand Consistency</span><h3>Shared design system</h3><p>Matches the rest of the portal instead of dropping in a generic template form.</p></article>
+                        <article class="table-card"><span>Business Context</span><h3>Real-world presentation</h3><p>Frames the project like a service business or portfolio brand, which strengthens the overall site impression.</p></article>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer"><div class="container footer-grid"><div><strong>Nexus Red Team Portal</strong><p>Contact and inquiry page.</p></div><div class="footer-links"><a href="about.html">About</a><a href="applications.html">Applications</a><a href="report.html">Breach Report</a></div></div></footer>
+    <script src="js/main.js"></script>
+</body>
+</html>

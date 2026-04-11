@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>(function(){var t=localStorage.getItem("nexusTheme");if(t){document.documentElement.setAttribute("data-theme",t)}})()</script>
+    <meta name="description" content="Phishing awareness prototype lab for Nexus Red Team Portal.">
+    <title>Nexus Red Team Portal | Phish-Lab</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="phish-lab">
+    <header class="site-header">
+        <div class="container nav-shell">
+            <a class="brand" href="index.html">
+                <span class="brand-mark">NR</span>
+                <span class="brand-copy"><strong>Nexus Red Team</strong><span>Portal Prototype</span></span>
+            </a>
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="siteNav">
+                <span></span><span></span><span></span>
+            </button>
+            <nav class="site-nav" id="siteNav" aria-label="Primary">
+                <a href="index.html">Dashboard</a>
+                <a href="about.html">About</a>
+                <div class="nav-dropdown">
+                    <button class="nav-dropdown-toggle" type="button" aria-expanded="false">
+                        Operations
+                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                    <div class="nav-dropdown-menu">
+                        <a href="arsenal.html">Arsenal</a>
+                        <a href="report.html">Breach Report</a>
+                        <a href="phish-lab.html">Phish-Lab</a>
+                        <a href="admin-logs.html">Admin Logs</a>
+                    </div>
+                </div>
+                <a href="applications.html">Applications</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-hero">
+            <div class="container">
+                <div class="phish-hero-layout">
+                    <div>
+                        <p class="eyebrow">Phish-Lab</p>
+                        <h1>Identify phishing attempts before they succeed.</h1>
+                        <p class="lead">This interactive simulation trains users to spot suspicious emails. Review the scenario below, decide whether to report it or click the link, and see how your response is logged for the admin console.</p>
+                        <div class="phish-stats">
+                            <div class="phish-stat"><strong>91%</strong><span>of breaches start with phishing</span></div>
+                            <div class="phish-stat"><strong>3.4B</strong><span>phishing emails sent daily</span></div>
+                        </div>
+                    </div>
+                    <div class="email-preview">
+                        <div class="email-chrome">
+                            <div class="email-header">
+                                <div class="email-from">
+                                    <span class="email-avatar">AP</span>
+                                    <div>
+                                        <strong>Accounts Payable &lt;ap-urgent@acc0unts-payab1e.net&gt;</strong>
+                                        <span class="email-meta">to: you &middot; Today 9:14 AM</span>
+                                    </div>
+                                </div>
+                                <span class="email-flag">⚠ External</span>
+                            </div>
+                            <div class="email-body">
+                                <p><strong>Subject: URGENT — Invoice #INV-20948 requires immediate payment</strong></p>
+                                <p>Hi Team,</p>
+                                <p>Our records indicate that Invoice #INV-20948 ($4,280.00) is past due. Failure to process payment within 24 hours will result in account suspension and a late penalty fee.</p>
+                                <p>Please verify and submit payment using the secure link below:</p>
+                                <a class="email-cta" href="#" data-simulate-click>Review &amp; Pay Invoice Now →</a>
+                                <p class="email-fine-print">This email was sent from an automated system. Do not reply directly.</p>
+                            </div>
+                            <div class="email-red-flags">
+                                <p><strong>🔍 Red Flags to Spot:</strong></p>
+                                <ul>
+                                    <li>Sender domain <code>acc0unts-payab1e.net</code> uses numbers instead of letters</li>
+                                    <li>Urgency and threat of penalty pressure quick action</li>
+                                    <li>No specific account or contact details provided</li>
+                                    <li>Generic greeting instead of your name</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container two-column">
+                <div class="form-card">
+                    <h2>Report Suspicious Message</h2>
+                    <p>If you identified this email as phishing, submit a report below. Your response is logged to the Admin console.</p>
+                    <form class="form-grid" data-phish-form>
+                        <div class="form-field"><label for="user">Your Name</label><input id="user" name="user" type="text" placeholder="Jordan Lee"></div>
+                        <div class="form-field"><label for="department">Department</label><input id="department" name="department" type="text" placeholder="Finance"></div>
+                        <div class="form-field full"><label for="notes">What looked suspicious?</label><textarea id="notes" name="notes" placeholder="Example: the sender domain uses numbers, the email demands urgent payment, and no specific account info is given."></textarea></div>
+                        <div class="form-field full"><button class="button button-primary" type="submit">Submit Awareness Report</button></div>
+                    </form>
+                    <div data-phish-message></div>
+                </div>
+                <div class="results-panel">
+                    <h2>Why This Matters</h2>
+                    <div class="results-list">
+                        <article class="table-card"><span>Report = Correct</span><h3>You identified the threat</h3><p>Reporting flags the email for the security team and prevents credential theft or unauthorized payments.</p></article>
+                        <article class="table-card"><span>Click = Compromised</span><h3>Simulated credential risk</h3><p>Clicking would redirect to an attacker-controlled page designed to harvest login credentials or payment info.</p></article>
+                        <article class="table-card"><span>Logged for Review</span><h3>Admin visibility</h3><p>Both actions are recorded in Admin Logs so training coordinators can assess team awareness levels.</p></article>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer"><div class="container footer-grid"><div><strong>Nexus Red Team Portal</strong><p>Awareness and simulation prototype.</p></div><div class="footer-links"><a href="admin-logs.html">View Logged Actions</a><a href="report.html">Breach Report</a><a href="applications.html">Applications</a></div></div></footer>
+    <script src="js/main.js"></script>
+</body>
+</html>

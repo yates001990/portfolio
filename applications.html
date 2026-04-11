@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>(function(){var t=localStorage.getItem("nexusTheme");if(t){document.documentElement.setAttribute("data-theme",t)}})()</script>
+    <meta name="description" content="Interactive applications portfolio integrated into Nexus Red Team Portal.">
+    <title>Nexus Red Team Portal | Applications</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-page="applications">
+    <header class="site-header">
+        <div class="container nav-shell">
+            <a class="brand" href="index.html">
+                <span class="brand-mark">NR</span>
+                <span class="brand-copy"><strong>Nexus Red Team</strong><span>Portal Prototype</span></span>
+            </a>
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="siteNav">
+                <span></span><span></span><span></span>
+            </button>
+            <nav class="site-nav" id="siteNav" aria-label="Primary">
+                <a href="index.html">Dashboard</a>
+                <a href="about.html">About</a>
+                <div class="nav-dropdown">
+                    <button class="nav-dropdown-toggle" type="button" aria-expanded="false">
+                        Operations
+                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                    <div class="nav-dropdown-menu">
+                        <a href="arsenal.html">Arsenal</a>
+                        <a href="report.html">Breach Report</a>
+                        <a href="phish-lab.html">Phish-Lab</a>
+                        <a href="admin-logs.html">Admin Logs</a>
+                    </div>
+                </div>
+                <a href="applications.html">Applications</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-hero">
+            <div class="container apps-layout">
+                <div>
+                    <p class="eyebrow">Applications Portfolio</p>
+                    <h1>Two working JavaScript apps integrated into the site design.</h1>
+                    <p class="lead">This page satisfies the course requirement for a dedicated applications section. Each application has a title, purpose, and live demo route within the portal.</p>
+                </div>
+                <div class="status-panel">
+                    <div class="metric-card"><span class="mini-label">Course App 1</span><strong>Miles Per Gallon Calculator</strong><p>Rebuilt to match the portal visual system with styled output.</p></div>
+                    <div class="metric-card"><span class="mini-label">Course App 2</span><strong>Auto Image Slider</strong><p>Four personal images with controls, autoplay, and thumbnails.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container app-grid">
+                <article class="app-card">
+                    <span>Application 01</span>
+                    <h3>Miles Per Gallon Calculator</h3>
+                    <p>Calculates fuel efficiency using user-entered mileage and gallons used, then labels the result for easier interpretation.</p>
+                    <div class="inline-actions"><a class="button button-primary" href="apps/miles-per-gallon.html">Open Demo</a></div>
+                </article>
+                <article class="app-card">
+                    <span>Application 02</span>
+                    <h3>Auto Image Slider</h3>
+                    <p>Displays four portfolio images with previous and next controls, autoplay rotation, status indicators, and thumbnail navigation.</p>
+                    <div class="inline-actions"><a class="button button-primary" href="apps/image-slider.html">Open Demo</a></div>
+                </article>
+
+            </div>
+        </section>
+
+        <section class="section section-alt">
+            <div class="container">
+                <div class="section-heading">
+                    <p class="eyebrow">Why These Apps Fit</p>
+                    <h2>The applications are styled as part of the portal instead of disconnected classroom exercises.</h2>
+                </div>
+                <div class="bullet-stack">
+                    <div class="bullet-item"><strong>Consistent design</strong><span>All demos use the same fonts, colors, buttons, and panels as the main site.</span></div>
+                    <div class="bullet-item"><strong>Course relevance</strong><span>The MPG calculator reflects prior coursework, while the slider meets the separate image-slider assignment requirements.</span></div>
+                    <div class="bullet-item"><strong>Business framing</strong><span>Both apps are wrapped inside the portal's CSS, nav system, and overall brand rather than appearing as standalone files.</span></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer"><div class="container footer-grid"><div><strong>Nexus Red Team Portal</strong><p>Integrated applications showcase.</p></div><div class="footer-links"><a href="apps/miles-per-gallon.html">MPG Demo</a><a href="apps/image-slider.html">Slider Demo</a><a href="index.html">Dashboard</a></div></div></footer>
+    <script src="js/main.js"></script>
+</body>
+</html>

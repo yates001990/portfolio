@@ -3,356 +3,187 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Cybersecurity Learning Hub - Education, Training, and Resources">
-    <title>CyberHub | Cybersecurity Learning & Resources</title>
+    <script>(function(){var t=localStorage.getItem("nexusTheme");if(t){document.documentElement.setAttribute("data-theme",t)}})()</script>
+    <meta name="description" content="Nexus Red Team Portal is a cybersecurity consulting and training prototype with security operations pages and interactive applications.">
+    <title>Nexus Red Team Portal | Home Dashboard</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
-    <style>
-        /* Modernized Calculator Styles */
-        .calculator-container {
-            max-width: 800px;
-            margin: 2rem auto;
-            padding: 2.5rem;
-            background: #1a1a1a; 
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            color: #e0e0e0;
-            border: 1px solid #333;
-        }
-
-        .calc-header {
-            margin-bottom: 2rem;
-            border-left: 4px solid #007bff;
-            padding-left: 15px;
-        }
-
-        .service-selection {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            margin-bottom: 2rem;
-        }
-
-        .service-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: #252525;
-            padding: 12px 15px;
-            border-radius: 6px;
-            border: 1px solid #333;
-            transition: all 0.2s ease;
-            cursor: pointer;
-            font-size: 0.9rem;
-        }
-
-        .service-item:hover {
-            border-color: #007bff;
-            background: #2d2d2d;
-        }
-
-        .service-info {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        /* Styling for the new descriptions */
-        .service-details {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .service-desc {
-            font-size: 0.7rem;
-            color: #888;
-            margin-top: 2px;
-        }
-
-        .price-tag {
-            color: #28a745;
-            font-family: 'IBM Plex Mono', monospace;
-            font-weight: 500;
-        }
-
-        .calc-group { margin-bottom: 1.5rem; }
-        .calc-group label { 
-            display: block; 
-            margin-bottom: 0.8rem; 
-            font-weight: 600; 
-            color: #aaa;
-            text-transform: uppercase;
-            font-size: 0.75rem;
-            letter-spacing: 1px;
-        }
-
-        .calc-group select { 
-            width: 100%; 
-            padding: 1rem; 
-            background: #252525;
-            border: 1px solid #333;
-            border-radius: 6px;
-            color: white;
-            outline: none;
-        }
-
-        .calc-btn { 
-            width: 100%; 
-            padding: 1.2rem; 
-            background: #007bff; 
-            color: white; 
-            border: none; 
-            border-radius: 6px; 
-            cursor: pointer; 
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-        }
-
-        .calc-btn:hover { background: #0056b3; box-shadow: 0 0 15px rgba(0,123,255,0.4); }
-
-        #calc-result { 
-            margin-top: 2rem; 
-            padding: 2rem; 
-            text-align: center; 
-            border-radius: 8px; 
-            display: none; 
-            background: #252525;
-            border: 1px solid #007bff;
-        }
-
-        .result-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin-top: 15px;
-        }
-
-        .result-item { padding: 15px; background: #1a1a1a; border-radius: 6px; }
-        .result-score { font-size: 2.2rem; font-weight: bold; color: #007bff; display: block; font-family: 'IBM Plex Mono'; }
-        .result-label { font-size: 0.9rem; font-weight: 600; margin-top: 10px; display: block; }
-
-        @media (max-width: 600px) { .service-selection { grid-template-columns: 1fr; } }
-    </style>
 </head>
-<body>
-    <header class="header">
-        <nav class="navbar" role="navigation" aria-label="Main navigation">
-            <div class="navbar-container">
-                <div class="navbar-brand">
-                    <a href="index.html" class="logo">
-                        <span class="logo-icon">◆</span>
-                        <span class="logo-text">CyberHub</span>
-                    </a>
+<body data-page="home">
+    <header class="site-header">
+        <div class="container nav-shell">
+            <a class="brand" href="index.html">
+                <span class="brand-mark">NR</span>
+                <span class="brand-copy"><strong>Nexus Red Team</strong><span>Portal Prototype</span></span>
+            </a>
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="siteNav">
+                <span></span><span></span><span></span>
+            </button>
+            <nav class="site-nav" id="siteNav" aria-label="Primary">
+                <a href="index.html">Dashboard</a>
+                <a href="about.html">About</a>
+                <div class="nav-dropdown">
+                    <button class="nav-dropdown-toggle" type="button" aria-expanded="false">
+                        Operations
+                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                    <div class="nav-dropdown-menu">
+                        <a href="arsenal.html">Arsenal</a>
+                        <a href="report.html">Breach Report</a>
+                        <a href="phish-lab.html">Phish-Lab</a>
+                        <a href="admin-logs.html">Admin Logs</a>
+                    </div>
                 </div>
-                
-                <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
-                    <span class="hamburger-line"></span>
-                    <span class="hamburger-line"></span>
-                    <span class="hamburger-line"></span>
-                </button>
-
-                <div class="nav-wrapper" id="navWrapper">
-                    <ul class="nav-menu">
-                        <li class="nav-item"><a href="index.html" class="nav-link"><i class="fas fa-home"></i> <span>Home</span></a></li>
-                        <li class="nav-item nav-item-dropdown">
-                            <a href="#" class="nav-link nav-link-dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-info-circle"></i> <span>About Us</span> <i class="fas fa-chevron-down dropdown-arrow"></i>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#about" class="dropdown-link">Our Mission</a></li>
-                                <li><a href="#about" class="dropdown-link">Team</a></li>
-                                <li><a href="#about" class="dropdown-link">Ethics & Guidelines</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item nav-item-dropdown">
-                            <a href="#" class="nav-link nav-link-dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-shield-alt"></i> <span>Security Topics</span> <i class="fas fa-chevron-down dropdown-arrow"></i>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#work" class="dropdown-link">Network Security</a></li>
-                                <li><a href="#work" class="dropdown-link">Threat Analysis</a></li>
-                                <li><a href="#work" class="dropdown-link">Defense Strategies</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item"><a href="#arsenal" class="nav-link"><i class="fas fa-tools"></i> <span>Resources</span></a></li>
-                        <li class="nav-item"><a href="#contact" class="nav-link"><i class="fas fa-envelope"></i> <span>Contact</span></a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+                <a href="applications.html">Applications</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </div>
     </header>
 
     <main>
-        <section class="hero">
-            <div class="hero-content">
-                <p class="hero-greeting">Welcome to</p>
-                <h1 class="hero-name">CyberHub</h1>
-                <p class="hero-title">Cybersecurity Learning & Resources</p>
-                <p class="hero-description">Comprehensive cybersecurity education covering security principles, best practices, and practical knowledge.</p>
-                <div class="hero-links">
-                    <a href="#about" class="link-btn">Learn More</a>
-                    <a href="#work" class="link-btn">Explore Topics</a>
-                    <a href="#contact" class="link-btn primary">Get in Touch</a>
-                </div>
-            </div>
-            <div class="hero-image">
-                <img src="images/pc-setup.jpg" alt="Cybersecurity Resources" class="profile-photo">
-            </div>
-        </section>
+        <section class="hero hero-home">
+            <div class="container hero-grid">
+                <div class="hero-copy">
+                    <p class="eyebrow">Cybersecurity Operations Prototype</p>
+                    <h1>One portal for audit tracking, analyst training, and client-facing demos.</h1>
+                    <p class="hero-text">Nexus Red Team Portal turns the requirements document into a polished multi-page business website. It combines service messaging, operational prototype pages, and working JavaScript applications inside one consistent experience.</p>
+                    <div class="hero-actions">
+                        <a class="button button-primary" href="applications.html">View Applications</a>
+                        <a class="button button-secondary" href="report.html">Open Breach Report</a>
+                    </div>
 
-        <section id="about" class="section about">
-            <h2 class="section-title">About</h2>
-            <div class="about-content">
-                <p>CyberHub is a comprehensive learning resource dedicated to cybersecurity education and awareness.</p>
-                <div class="skills">
-                    <span class="skill">Network Security</span>
-                    <span class="skill">Threat Analysis</span>
-                    <span class="skill">Risk Assessment</span>
+                </div>
+                <div class="hero-panel">
+                    <img src="images/stock/cyber-operations.jpg" alt="Cybersecurity analyst workstation with code on multiple screens">
                 </div>
             </div>
         </section>
 
-        <section id="risk-calc" class="section">
-            <h2 class="section-title">Pentest Scoping Calculator</h2>
-            <div class="calculator-container">
-                <div class="calc-header">
-                    <p style="margin: 0; color: #888;">Select services to calculate estimate</p>
+        <section class="section">
+            <div class="container">
+                <div class="section-heading">
+                    <p class="eyebrow">What The Portal Covers</p>
+                    <h2>Built to match both course instructions and the requirements document</h2>
                 </div>
-
-                <div class="service-selection">
-                    <label class="service-item">
-                        <div class="service-info">
-                            <input type="checkbox" class="pt-svc" data-weight="25" data-price="2500">
-                            <div class="service-details">
-                                <span>Web App</span>
-                                <span class="service-desc">OWASP Top 10 & Logic</span>
-                            </div>
-                        </div>
-                        <span class="price-tag">$2,500</span>
-                    </label>
-                    <label class="service-item">
-                        <div class="service-info">
-                            <input type="checkbox" class="pt-svc" data-weight="10" data-price="1500">
-                            <div class="service-details">
-                                <span>External</span>
-                                <span class="service-desc">Perimeter & IPs</span>
-                            </div>
-                        </div>
-                        <span class="price-tag">$1,500</span>
-                    </label>
-                    <label class="service-item">
-                        <div class="service-info">
-                            <input type="checkbox" class="pt-svc" data-weight="20" data-price="3500">
-                            <div class="service-details">
-                                <span>Internal</span>
-                                <span class="service-desc">Network & AD Pivot</span>
-                            </div>
-                        </div>
-                        <span class="price-tag">$3,500</span>
-                    </label>
-                    <label class="service-item">
-                        <div class="service-info">
-                            <input type="checkbox" class="pt-svc" data-weight="30" data-price="4000">
-                            <div class="service-details">
-                                <span>Mobile App</span>
-                                <span class="service-desc">iOS/Android Binary</span>
-                            </div>
-                        </div>
-                        <span class="price-tag">$4,000</span>
-                    </label>
-                    <label class="service-item">
-                        <div class="service-info">
-                            <input type="checkbox" class="pt-svc" data-weight="15" data-price="2000">
-                            <div class="service-details">
-                                <span>Cloud Config</span>
-                                <span class="service-desc">AWS/Azure Audit</span>
-                            </div>
-                        </div>
-                        <span class="price-tag">$2,000</span>
-                    </label>
-                    <label class="service-item">
-                        <div class="service-info">
-                            <input type="checkbox" class="pt-svc" data-weight="18" data-price="2200">
-                            <div class="service-details">
-                                <span>API Sec</span>
-                                <span class="service-desc">Endpoints & Auth</span>
-                            </div>
-                        </div>
-                        <span class="price-tag">$2,200</span>
-                    </label>
-                    <label class="service-item">
-                        <div class="service-info">
-                            <input type="checkbox" class="pt-svc" data-weight="22" data-price="4500">
-                            <div class="service-details">
-                                <span>Active Directory</span>
-                                <span class="service-desc">Domain Escalation</span>
-                            </div>
-                        </div>
-                        <span class="price-tag">$4,500</span>
-                    </label>
-                    <label class="service-item">
-                        <div class="service-info">
-                            <input type="checkbox" class="pt-svc" data-weight="35" data-price="5500">
-                            <div class="service-details">
-                                <span>IoT Hardware</span>
-                                <span class="service-desc">Firmware & Physical</span>
-                            </div>
-                        </div>
-                        <span class="price-tag">$5,500</span>
-                    </label>
+                <div class="feature-grid">
+                    <article class="feature-card">
+                        <span class="feature-kicker">Home Dashboard</span>
+                        <h3>Service-led landing experience</h3>
+                        <p>Introduces the business concept, highlights capabilities, and routes visitors into core prototype modules.</p>
+                    </article>
+                    <article class="feature-card">
+                        <span class="feature-kicker">The Arsenal</span>
+                        <h3>Searchable tool reference</h3>
+                        <p>A JavaScript-powered searchable database simulates the future SQL-backed tool syntax library described in the requirements document.</p>
+                    </article>
+                    <article class="feature-card">
+                        <span class="feature-kicker">Applications</span>
+                        <h3>Course work integrated into brand</h3>
+                        <p>The MPG calculator and auto image slider are embedded directly into the portal design system as working demos.</p>
+                    </article>
+                    <article class="feature-card">
+                        <span class="feature-kicker">Admin Logs</span>
+                        <h3>Prototype data review layer</h3>
+                        <p>Client-side log storage demonstrates how report and awareness data could flow into an admin console before backend development.</p>
+                    </article>
                 </div>
+            </div>
+        </section>
 
-                <div class="calc-group">
-                    <label for="complexity">Environment Complexity</label>
-                    <select id="complexity">
-                        <option value="1">Standard (1.0x)</option>
-                        <option value="1.5">High (1.5x)</option>
-                        <option value="2">Critical Infrastructure (2.0x)</option>
-                    </select>
-                </div>
-
-                <button class="calc-btn">Calculate Estimate</button>
-
-                <div id="calc-result">
-                    <div class="result-grid">
-                        <div class="result-item">
-                            <span class="result-score" id="res-price">$0</span>
-                            <span class="result-label">ESTIMATED COST</span>
+        <section class="section section-alt">
+            <div class="container split-layout">
+                <div>
+                    <p class="eyebrow">Mission</p>
+                    <h2>Designed for cybersecurity students, junior pentesters, and training teams.</h2>
+                    <p>Nexus Red Team Portal centralizes scattered notes, tool syntax, findings intake, and training exercises. The prototype presents that idea as a business-ready interface instead of a loose set of class files.</p>
+                    <div class="bullet-stack">
+                        <div class="bullet-item">
+                            <strong>Professional theme</strong>
+                            <span>Clean, modern interface with light and dark modes, consistent layout, and high-contrast typography.</span>
                         </div>
-                        <div class="result-item">
-                            <span class="result-score" id="res-weight">0</span>
-                            <span class="result-label">COMPLEXITY UNITS</span>
+                        <div class="bullet-item">
+                            <strong>Prototype alignment</strong>
+                            <span>Includes Home, About, Contact, Applications, plus the site-model pages from the requirements document.</span>
+                        </div>
+                        <div class="bullet-item">
+                            <strong>Course integration</strong>
+                            <span>Apps are visually embedded into the brand instead of appearing as unrelated standalone exercises.</span>
                         </div>
                     </div>
+                </div>
+                <div class="insight-panel glass-card">
+                    <p class="panel-label">Current Modules</p>
+                    <div class="mini-metric-row">
+                        <div>
+                            <strong>Arsenal</strong>
+                            <span>Search tools</span>
+                        </div>
+                        <div>
+                            <strong>Reports</strong>
+                            <span>Store findings</span>
+                        </div>
+                        <div>
+                            <strong>Awareness</strong>
+                            <span>Track actions</span>
+                        </div>
+                    </div>
+                    <img src="images/stock/security-dashboard.jpg" alt="Cybersecurity dashboard on a laptop screen">
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="section-heading">
+                    <p class="eyebrow">Quick Access</p>
+                    <h2>Move through the prototype like a real operations website</h2>
+                </div>
+                <div class="page-grid">
+                    <a class="page-card" href="about.html">
+                        <span>About / Business</span>
+                        <strong>Brand story, purpose, and service positioning</strong>
+                    </a>
+                    <a class="page-card" href="applications.html">
+                        <span>Applications</span>
+                        <strong>Integrated portfolio apps with descriptions and demos</strong>
+                    </a>
+                    <a class="page-card" href="arsenal.html">
+                        <span>The Arsenal</span>
+                        <strong>Search commands and usage patterns</strong>
+                    </a>
+                    <a class="page-card" href="report.html">
+                        <span>Breach Report</span>
+                        <strong>Log vulnerability findings through a styled form</strong>
+                    </a>
+                    <a class="page-card" href="phish-lab.html">
+                        <span>Phish-Lab</span>
+                        <strong>Simulate security awareness responses and tracking</strong>
+                    </a>
+                    <a class="page-card" href="admin-logs.html">
+                        <span>Admin Logs</span>
+                        <strong>Review locally stored prototype data tables</strong>
+                    </a>
                 </div>
             </div>
         </section>
     </main>
 
-    <script>
-        // Simple logic to make the calculate button functional
-        document.querySelector('.calc-btn').addEventListener('click', () => {
-            let total = 0;
-            let weight = 0;
-            const complexity = parseFloat(document.getElementById('complexity').value);
-            
-            document.querySelectorAll('.pt-svc:checked').forEach(item => {
-                total += parseFloat(item.dataset.price);
-                weight += parseFloat(item.dataset.weight);
-            });
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div>
+                <strong>Nexus Red Team Portal</strong>
+                <p>Final term project prototype for client-side programming.</p>
+            </div>
+            <div class="footer-links">
+                <a href="applications.html">Applications</a>
+                <a href="contact.html">Contact</a>
+                <a href="admin-logs.html">Admin Logs</a>
+            </div>
+        </div>
+    </footer>
 
-            if(total > 0) {
-                document.getElementById('res-price').innerText = '$' + (total * complexity).toLocaleString();
-                document.getElementById('res-weight').innerText = Math.round(weight * complexity);
-                document.getElementById('calc-result').style.display = 'block';
-            } else {
-                alert('Please select at least one service.');
-            }
-        });
-    </script>
+    <script src="js/main.js"></script>
 </body>
 </html>

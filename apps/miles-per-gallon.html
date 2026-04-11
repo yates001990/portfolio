@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>(function(){var t=localStorage.getItem("nexusTheme");if(t){document.documentElement.setAttribute("data-theme",t)}})()</script>
+    <meta name="description" content="Miles per gallon calculator integrated into Nexus Red Team Portal.">
+    <title>Nexus Red Team Portal | Miles Per Gallon Calculator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body data-page="applications">
+    <header class="site-header">
+        <div class="container nav-shell">
+            <a class="brand" href="../index.html">
+                <span class="brand-mark">NR</span>
+                <span class="brand-copy"><strong>Nexus Red Team</strong><span>Portal Prototype</span></span>
+            </a>
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="siteNav">
+                <span></span><span></span><span></span>
+            </button>
+            <nav class="site-nav" id="siteNav" aria-label="Primary">
+                <a href="../index.html">Dashboard</a>
+                <a href="../about.html">About</a>
+                <div class="nav-dropdown">
+                    <button class="nav-dropdown-toggle" type="button" aria-expanded="false">
+                        Operations
+                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                    <div class="nav-dropdown-menu">
+                        <a href="../arsenal.html">Arsenal</a>
+                        <a href="../report.html">Breach Report</a>
+                        <a href="../phish-lab.html">Phish-Lab</a>
+                        <a href="../admin-logs.html">Admin Logs</a>
+                    </div>
+                </div>
+                <a href="../applications.html">Applications</a>
+                <a href="../contact.html">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-hero">
+            <div class="container two-column">
+                <div>
+                    <p class="eyebrow">Application Demo</p>
+                    <h1>Miles Per Gallon Calculator</h1>
+                    <p class="lead">This rebuilt version of the original mileage calculator now matches the site theme and keeps the functionality fully interactive.</p>
+                    <div class="tag-row"><span class="tag">User Input</span><span class="tag">Functions</span><span class="tag">DOM Output</span></div>
+                </div>
+                <div class="app-shell">
+                    <form class="form-grid" data-mpg-form>
+                        <div class="form-field"><label for="miles">Miles Traveled</label><input id="miles" data-mpg-miles type="number" min="1" step="0.1" placeholder="240"></div>
+                        <div class="form-field"><label for="gallons">Gallons Used</label><input id="gallons" data-mpg-gallons type="number" min="0.1" step="0.1" placeholder="8"></div>
+                        <div class="form-field full"><button class="button button-primary" type="submit">Calculate MPG</button></div>
+                    </form>
+                    <div data-mpg-result></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer"><div class="container footer-grid"><div><strong>Nexus Red Team Portal</strong><p>Updated mileage calculator application.</p></div><div class="footer-links"><a href="../applications.html">Back to Applications</a><a href="image-slider.html">Image Slider</a><a href="readiness-assessment.html">Readiness Demo</a></div></div></footer>
+    <script src="../js/main.js"></script>
+</body>
+</html>

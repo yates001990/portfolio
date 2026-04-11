@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>(function(){var t=localStorage.getItem("nexusTheme");if(t){document.documentElement.setAttribute("data-theme",t)}})()</script>
+    <meta name="description" content="Security readiness assessment calculator for Nexus Red Team Portal.">
+    <title>Nexus Red Team Portal | Readiness Assessment</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body data-page="applications">
+    <header class="site-header">
+        <div class="container nav-shell">
+            <a class="brand" href="../index.html">
+                <span class="brand-mark">NR</span>
+                <span class="brand-copy"><strong>Nexus Red Team</strong><span>Portal Prototype</span></span>
+            </a>
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="siteNav">
+                <span></span><span></span><span></span>
+            </button>
+            <nav class="site-nav" id="siteNav" aria-label="Primary">
+                <a href="../index.html">Dashboard</a>
+                <a href="../about.html">About</a>
+                <div class="nav-dropdown">
+                    <button class="nav-dropdown-toggle" type="button" aria-expanded="false">
+                        Operations
+                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                    <div class="nav-dropdown-menu">
+                        <a href="../arsenal.html">Arsenal</a>
+                        <a href="../report.html">Breach Report</a>
+                        <a href="../phish-lab.html">Phish-Lab</a>
+                        <a href="../admin-logs.html">Admin Logs</a>
+                    </div>
+                </div>
+                <a href="../applications.html">Applications</a>
+                <a href="../contact.html">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-hero">
+            <div class="container two-column">
+                <div>
+                    <p class="eyebrow">Application Demo</p>
+                    <h1>Security Readiness Assessment</h1>
+                    <p class="lead">This extra application strengthens the portfolio page with a business-aligned calculator that scores readiness using multiple controls and DOM updates.</p>
+                    <div class="tag-row"><span class="tag">Forms</span><span class="tag">Loops</span><span class="tag">DOM Manipulation</span></div>
+                </div>
+                <div class="readiness-card">
+                    <form class="form-grid" data-readiness-form>
+                        <div class="form-field"><label for="policy">Security Policy</label><select id="policy"><option value="1">No documented policy</option><option value="3">Basic policy exists</option><option value="5">Reviewed and enforced</option></select></div>
+                        <div class="form-field"><label for="mfa">MFA Coverage</label><select id="mfa"><option value="1">Rarely used</option><option value="3">Partial rollout</option><option value="5">Company-wide</option></select></div>
+                        <div class="form-field"><label for="backups">Backup Testing</label><select id="backups"><option value="1">Unverified</option><option value="3">Occasional checks</option><option value="5">Scheduled restore tests</option></select></div>
+                        <div class="form-field"><label for="awareness">Awareness Training</label><select id="awareness"><option value="1">Not formalized</option><option value="3">Annual training</option><option value="5">Ongoing campaigns</option></select></div>
+                        <div class="form-field full"><button class="button button-primary" type="submit">Calculate Readiness</button></div>
+                    </form>
+                    <div class="app-result-grid" data-readiness-result></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer"><div class="container footer-grid"><div><strong>Nexus Red Team Portal</strong><p>Business-aligned assessment application.</p></div><div class="footer-links"><a href="../applications.html">Back to Applications</a><a href="miles-per-gallon.html">MPG Demo</a><a href="image-slider.html">Slider Demo</a></div></div></footer>
+    <script src="../js/main.js"></script>
+</body>
+</html>

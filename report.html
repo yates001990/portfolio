@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script>(function(){var t=localStorage.getItem("nexusTheme");if(t){document.documentElement.setAttribute("data-theme",t)}})()</script>
-    <meta name="description" content="Breach report intake prototype for Nexus Red Team Portal.">
+    <meta name="description" content="Vulnerability intake form for logging and tracking security findings.">
     <title>Nexus Red Team Portal | Breach Report</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,7 +16,7 @@
         <div class="container nav-shell">
             <a class="brand" href="index.html">
                 <span class="brand-mark">NR</span>
-                <span class="brand-copy"><strong>Nexus Red Team</strong><span>Portal Prototype</span></span>
+                <span class="brand-copy"><strong>Nexus Red Team</strong><span>Security Operations</span></span>
             </a>
             <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="siteNav">
                 <span></span><span></span><span></span>
@@ -61,7 +61,7 @@
             <div class="container two-column">
                 <div class="form-card">
                     <h2>Submit Finding</h2>
-                    <p>Document a discovered vulnerability. All fields map to the planned MySQL <code>vuln_logs</code> table from the requirements document.</p>
+                    <p>Document a discovered vulnerability. Fields are structured to map directly to a backend database for long-term tracking.</p>
                     <form class="form-grid" data-breach-form>
                         <div class="form-field"><label for="client">Client / Target</label><input id="client" name="client" type="text" placeholder="Acme Retail Corp"></div>
                         <div class="form-field"><label for="contact">Contact Email</label><input id="contact" name="contact" type="email" placeholder="security@acmeretail.com"></div>
@@ -78,15 +78,15 @@
                     <h2>Report Workflow</h2>
                     <div class="results-list">
                         <article class="table-card"><span>Step 1</span><h3>Document the finding</h3><p>Fill in the client, severity, affected asset, and a clear summary with recommended next steps.</p></article>
-                        <article class="table-card"><span>Step 2</span><h3>Data is stored locally</h3><p>The prototype saves entries to browser storage, simulating the SQL INSERT that the backend version will perform.</p></article>
-                        <article class="table-card"><span>Step 3</span><h3>Review in Admin Logs</h3><p>Navigate to Admin Logs to see all submitted findings in a sortable table — the same view an engagement lead would use.</p></article>
+                        <article class="table-card"><span>Step 2</span><h3>Entry is stored securely</h3><p>Each submission is saved and queued for review. In the full deployment, this data flows into a SQL database for permanent retention.</p></article>
+                        <article class="table-card"><span>Step 3</span><h3>Review in Admin Logs</h3><p>Navigate to Admin Logs to see all submitted findings in a sortable table, the same view an engagement lead would use.</p></article>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="site-footer"><div class="container footer-grid"><div><strong>Nexus Red Team Portal</strong><p>Prototype reporting workflow.</p></div><div class="footer-links"><a href="admin-logs.html">Open Admin Logs</a><a href="arsenal.html">Open Arsenal</a><a href="contact.html">Contact</a></div></div></footer>
+    <footer class="site-footer"><div class="container footer-grid"><div><strong>Nexus Red Team Portal</strong><p>Vulnerability reporting and tracking.</p></div><div class="footer-links"><a href="admin-logs.html">Open Admin Logs</a><a href="arsenal.html">Open Arsenal</a><a href="contact.html">Contact</a></div></div></footer>
     <script src="js/main.js"></script>
 </body>
 </html>

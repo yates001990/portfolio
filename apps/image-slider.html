@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script>(function(){var t=localStorage.getItem("nexusTheme");if(t){document.documentElement.setAttribute("data-theme",t)}})()</script>
-    <meta name="description" content="Auto image slider integrated into Nexus Red Team Portal.">
+    <meta name="description" content="Auto image slider with controls and thumbnail previews.">
     <title>Nexus Red Team Portal | Auto Image Slider</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body data-page="applications">
@@ -22,7 +22,7 @@
                 <span></span><span></span><span></span>
             </button>
             <nav class="site-nav" id="siteNav" aria-label="Primary">
-                <a href="../index.html">Dashboard</a>
+                <a href="../index.html">Home</a>
                 <a href="../about.html">About</a>
                 <div class="nav-dropdown">
                     <button class="nav-dropdown-toggle" type="button" aria-expanded="false">
@@ -46,28 +46,28 @@
         <section class="page-hero">
             <div class="container two-column">
                 <div>
-                    <p class="eyebrow">Application Demo</p>
+                    <p class="eyebrow">Gallery</p>
                     <h1>Auto Image Slider With Controls</h1>
-                    <p class="lead">This slider uses four personal images from the project folder, includes forward and backward navigation, rotates automatically, and adapts to smaller screens.</p>
-                    <div class="tag-row"><span class="tag">Autoplay</span><span class="tag">Controls</span><span class="tag">Responsive</span><span class="tag">Thumbnail Navigation</span></div>
+                    <p class="lead">Browse four images with autoplay, manual controls, and thumbnail previews.</p>
+                    <div class="tag-row"><span class="tag">Autoplay</span><span class="tag">Controls</span><span class="tag">Thumbnails</span></div>
                 </div>
                 <div class="slider-shell" data-slider>
                     <div class="slider-stage">
                         <figure class="slide is-active">
-                            <img src="../images/Image 1.jpeg" alt="Portfolio image one displayed in the slider">
-                            <figcaption class="slide-caption"><strong>Field Session</strong><p>Image 1 from the personal portfolio set.</p></figcaption>
+                            <img src="../images/Image 1.jpeg" alt="Field session photo" width="1170" height="905" decoding="async">
+                            <figcaption class="slide-caption"><strong>Field Session</strong><p>Morning site walk and setup.</p></figcaption>
                         </figure>
                         <figure class="slide">
-                            <img src="../images/Image 2.jpeg" alt="Portfolio image two displayed in the slider">
-                            <figcaption class="slide-caption"><strong>Operations Snapshot</strong><p>Image 2 from the personal portfolio set.</p></figcaption>
+                            <img src="../images/Image 2.jpeg" alt="Operations snapshot photo" width="958" height="1024" decoding="async">
+                            <figcaption class="slide-caption"><strong>Operations Snapshot</strong><p>Monitoring multiple screens at once.</p></figcaption>
                         </figure>
                         <figure class="slide">
-                            <img src="../images/Image 3.jpeg" alt="Portfolio image three displayed in the slider">
-                            <figcaption class="slide-caption"><strong>Analyst Workspace</strong><p>Image 3 from the personal portfolio set.</p></figcaption>
+                            <img src="../images/Image 3.jpeg" alt="Analyst workspace photo" width="1536" height="2048" decoding="async">
+                            <figcaption class="slide-caption"><strong>Analyst Workspace</strong><p>Notes, tools, and references in one view.</p></figcaption>
                         </figure>
                         <figure class="slide">
-                            <img src="../images/Image 4.jpeg" alt="Portfolio image four displayed in the slider">
-                            <figcaption class="slide-caption"><strong>Mission Review</strong><p>Image 4 from the personal portfolio set.</p></figcaption>
+                            <img src="../images/Image 4.jpeg" alt="Mission review photo" width="1520" height="2048" decoding="async">
+                            <figcaption class="slide-caption"><strong>Mission Review</strong><p>Final review before handoff.</p></figcaption>
                         </figure>
                     </div>
                     <div class="slider-controls">
@@ -75,18 +75,62 @@
                         <span class="chip" data-slider-status>Slide 1 of 4</span>
                         <button type="button" data-slider-next>Next</button>
                     </div>
-                    <div class="slider-thumbs">
-                        <button class="thumb-button is-active" type="button">01</button>
-                        <button class="thumb-button" type="button">02</button>
-                        <button class="thumb-button" type="button">03</button>
-                        <button class="thumb-button" type="button">04</button>
+                    <div class="slider-thumbs" aria-label="Slide previews">
+                        <button class="thumb-button is-active" type="button" aria-label="Show Field Session">
+                            <span class="thumb-image"><img src="../images/Image 1.jpeg" alt="Field session preview" width="1170" height="905" loading="lazy" decoding="async"></span>
+                            <span class="thumb-label">Field Session</span>
+                        </button>
+                        <button class="thumb-button" type="button" aria-label="Show Operations Snapshot">
+                            <span class="thumb-image"><img src="../images/Image 2.jpeg" alt="Operations snapshot preview" width="958" height="1024" loading="lazy" decoding="async"></span>
+                            <span class="thumb-label">Operations</span>
+                        </button>
+                        <button class="thumb-button" type="button" aria-label="Show Analyst Workspace">
+                            <span class="thumb-image"><img src="../images/Image 3.jpeg" alt="Analyst workspace preview" width="1536" height="2048" loading="lazy" decoding="async"></span>
+                            <span class="thumb-label">Workspace</span>
+                        </button>
+                        <button class="thumb-button" type="button" aria-label="Show Mission Review">
+                            <span class="thumb-image"><img src="../images/Image 4.jpeg" alt="Mission review preview" width="1520" height="2048" loading="lazy" decoding="async"></span>
+                            <span class="thumb-label">Review</span>
+                        </button>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="site-footer"><div class="container footer-grid"><div><strong>Nexus Red Team Portal</strong><p>Automated image gallery with full playback controls.</p></div><div class="footer-links"><a href="../applications.html">Back to Applications</a><a href="miles-per-gallon.html">MPG Calculator</a></div></div></footer>
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <strong>Nexus Red Team</strong>
+                <p>Security operations dashboard for tools, findings, and awareness.</p>
+                <address>1200 Market Street, Suite 400<br>New York, NY 10018</address>
+            </div>
+            <div class="footer-columns">
+                <div class="footer-column">
+                    <span class="footer-column-title">Pages</span>
+                    <a href="../index.html">Home</a>
+                    <a href="../about.html">About</a>
+                    <a href="../contact.html">Contact</a>
+                    <a href="../applications.html">Applications</a>
+                </div>
+                <div class="footer-column">
+                    <span class="footer-column-title">Operations</span>
+                    <a href="../arsenal.html">Arsenal</a>
+                    <a href="../report.html">Breach Report</a>
+                    <a href="../phish-lab.html">Phish-Lab</a>
+                    <a href="../admin-logs.html">Admin Logs</a>
+                </div>
+                <div class="footer-column">
+                    <span class="footer-column-title">Utilities</span>
+                    <a href="../apps/miles-per-gallon.html">Calculator</a>
+                    <a href="../apps/image-slider.html">Gallery</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container"><p class="footer-copyright">&copy; 2026 Nexus Red Team. All rights reserved.</p></div>
+        </div>
+    </footer>
     <script src="../js/main.js"></script>
 </body>
 </html>

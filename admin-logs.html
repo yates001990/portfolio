@@ -22,7 +22,7 @@
                 <span></span><span></span><span></span>
             </button>
             <nav class="site-nav" id="siteNav" aria-label="Primary">
-                <a href="index.html">Dashboard</a>
+                <a href="index.html">Home</a>
                 <a href="about.html">About</a>
                 <div class="nav-dropdown">
                     <button class="nav-dropdown-toggle" type="button" aria-expanded="false">
@@ -44,46 +44,111 @@
 
     <main>
         <section class="page-hero">
-            <div class="container two-column">
-                <div>
-                    <p class="eyebrow">Admin Logs</p>
-                    <h1>Centralized view of all portal activity and findings.</h1>
-                    <p class="lead">This console aggregates data from the Breach Report and Phish-Lab modules into a single admin view, giving engagement leads and training coordinators full visibility into portal activity.</p>
-                </div>
-                <div class="status-panel">
-                    <div class="metric-card"><span class="mini-label">Breach Reports</span><strong data-report-count>0</strong><p>Vulnerability findings submitted through the Breach Report form.</p></div>
-                    <div class="metric-card"><span class="mini-label">Phish-Lab Events</span><strong data-phish-count>0</strong><p>Awareness reports and simulated clicks from phishing exercises.</p></div>
-                    <button class="ghost-button" type="button" data-clear-logs>Clear All Logs</button>
-                </div>
+            <div class="container">
+                <p class="eyebrow">Admin Logs</p>
+                <h1>Centralized activity review.</h1>
+                <p class="lead" style="max-width:560px">See breach findings and phishing responses in one place. Records are stored locally and persist between sessions.</p>
             </div>
         </section>
 
         <section class="section">
-            <div class="container log-panel">
-                <div class="log-toolbar"><h2>Breach Report Entries</h2><span class="log-badge" data-report-count>0</span></div>
-                <div class="table-scroller">
-                    <table>
-                        <thead><tr><th>Date</th><th>Client</th><th>Finding</th><th>Severity</th><th>Status</th><th>Affected Asset</th></tr></thead>
-                        <tbody data-report-table></tbody>
-                    </table>
-                </div>
-            </div>
-        </section>
+            <div class="container">
 
-        <section class="section section-alt">
-            <div class="container log-panel">
-                <div class="log-toolbar"><h2>Phish-Lab Activity</h2><span class="log-badge" data-phish-count>0</span></div>
-                <div class="table-scroller">
-                    <table>
-                        <thead><tr><th>Date</th><th>User</th><th>Department</th><th>Action</th><th>Notes</th></tr></thead>
-                        <tbody data-phish-table></tbody>
-                    </table>
+                <div class="log-actions">
+                    <div></div>
+                    <button class="ghost-button" type="button" data-clear-logs>Clear all logs</button>
                 </div>
+
+                <div class="log-metrics">
+                    <div class="log-metric-cell">
+                        <span class="lmc-value" data-report-count>0</span>
+                        <span class="lmc-label">Breach Findings</span>
+                        <span class="lmc-sub">Logged through the report form</span>
+                    </div>
+                    <div class="log-metric-cell">
+                        <span class="lmc-value" data-phish-count>0</span>
+                        <span class="lmc-label">Phish Responses</span>
+                        <span class="lmc-sub">Logged through the Phish-Lab</span>
+                    </div>
+                </div>
+
+                <div class="log-tabs" role="tablist">
+                    <button class="log-tab is-active" type="button" role="tab" aria-selected="true" data-log-tab="breach">Breach Reports</button>
+                    <button class="log-tab" type="button" role="tab" aria-selected="false" data-log-tab="phish">Phish-Lab Activity</button>
+                </div>
+
+                <div class="log-table-section is-active" id="log-breach">
+                    <div class="table-scroller">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Client</th>
+                                    <th>Finding</th>
+                                    <th>Severity</th>
+                                    <th>Status</th>
+                                    <th>Asset</th>
+                                </tr>
+                            </thead>
+                            <tbody data-report-table></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="log-table-section" id="log-phish">
+                    <div class="table-scroller">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>User</th>
+                                    <th>Department</th>
+                                    <th>Action</th>
+                                    <th>Notes</th>
+                                </tr>
+                            </thead>
+                            <tbody data-phish-table></tbody>
+                        </table>
+                    </div>
+                </div>
+
             </div>
         </section>
     </main>
 
-    <footer class="site-footer"><div class="container footer-grid"><div><strong>Nexus Red Team Portal</strong><p>Centralized activity console.</p></div><div class="footer-links"><a href="report.html">New Report</a><a href="phish-lab.html">Phish-Lab</a><a href="applications.html">Applications</a></div></div></footer>
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <strong>Nexus Red Team</strong>
+                <p>Security operations dashboard for tools, findings, and awareness.</p>
+                <address>1200 Market Street, Suite 400<br>New York, NY 10018</address>
+            </div>
+            <div class="footer-columns">
+                <div class="footer-column">
+                    <span class="footer-column-title">Pages</span>
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="applications.html">Applications</a>
+                </div>
+                <div class="footer-column">
+                    <span class="footer-column-title">Operations</span>
+                    <a href="arsenal.html">Arsenal</a>
+                    <a href="report.html">Breach Report</a>
+                    <a href="phish-lab.html">Phish-Lab</a>
+                    <a href="admin-logs.html">Admin Logs</a>
+                </div>
+                <div class="footer-column">
+                    <span class="footer-column-title">Utilities</span>
+                    <a href="apps/miles-per-gallon.html">Calculator</a>
+                    <a href="apps/image-slider.html">Gallery</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container"><p class="footer-copyright">&copy; 2026 Nexus Red Team. All rights reserved.</p></div>
+        </div>
+    </footer>
     <script src="js/main.js"></script>
 </body>
 </html>

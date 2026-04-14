@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script>(function(){var t=localStorage.getItem("nexusTheme");if(t){document.documentElement.setAttribute("data-theme",t)}})()</script>
-    <meta name="description" content="Searchable tool syntax and command reference for the Nexus Red Team Portal.">
+    <meta name="description" content="Operational toolkit for authorized assessments and real-world security workflows.">
     <title>Nexus Red Team Portal | The Arsenal</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,7 +22,7 @@
                 <span></span><span></span><span></span>
             </button>
             <nav class="site-nav" id="siteNav" aria-label="Primary">
-                <a href="index.html">Dashboard</a>
+                <a href="index.html">Home</a>
                 <a href="about.html">About</a>
                 <div class="nav-dropdown">
                     <button class="nav-dropdown-toggle" type="button" aria-expanded="false">
@@ -48,8 +48,8 @@
                 <div class="arsenal-hero-layout">
                     <div>
                         <p class="eyebrow">The Arsenal</p>
-                        <h1>Searchable tool syntax and command reference.</h1>
-                        <p class="lead">Search 12 indexed penetration testing tools across six categories. Filter by risk level, keyword, or tag to find the exact command syntax you need for any engagement.</p>
+                        <h1>Operational toolkit for authorized assessments.</h1>
+                        <p class="lead">Browse real tools used for perimeter reviews, web testing, internal validation, and traffic analysis. Search by tool, task, category, tag, or risk level.</p>
                         <div class="arsenal-stats">
                             <div class="arsenal-stat"><strong>12</strong><span>Tools indexed</span></div>
                             <div class="arsenal-stat"><strong>6</strong><span>Categories</span></div>
@@ -58,8 +58,8 @@
                     </div>
                     <div class="arsenal-search-panel">
                         <div class="search-wrap">
-                            <label class="search-label" for="arsenal-search">Search tools, categories, tags, or risk levels</label>
-                            <input class="search-input" id="arsenal-search" type="search" data-arsenal-input placeholder="Try &quot;nmap&quot;, &quot;web&quot;, &quot;high&quot;, or &quot;passwords&quot;">
+                            <label class="search-label" for="arsenal-search">Search tools, scenarios, tags, or risk levels</label>
+                            <input class="search-input" id="arsenal-search" type="search" data-arsenal-input placeholder="Try &quot;nmap&quot;, &quot;burp&quot;, &quot;hashcat&quot;, or &quot;internal&quot;">
                         </div>
                         <div class="arsenal-filters">
                             <button class="filter-chip is-active" type="button" data-arsenal-filter="All">All</button>
@@ -70,7 +70,7 @@
                             <button class="filter-chip" type="button" data-arsenal-filter="Internal">Internal</button>
                             <button class="filter-chip" type="button" data-arsenal-filter="Exploitation">Exploitation</button>
                         </div>
-                        <p class="arsenal-counter" data-arsenal-count>12 tools found</p>
+                        <p class="arsenal-counter" data-arsenal-count>12 tools available</p>
                     </div>
                 </div>
             </div>
@@ -85,31 +85,63 @@
         <section class="section section-alt">
             <div class="container">
                 <div class="section-heading">
-                    <p class="eyebrow">How It Works</p>
-                    <h2>Three steps from search to execution</h2>
+                    <p class="eyebrow">Assessment Paths</p>
+                    <h2>Assessment paths used in the field</h2>
                 </div>
                 <div class="feature-grid">
                     <article class="feature-card">
-                        <span class="feature-kicker">Step 1</span>
-                        <h3>Search or filter</h3>
-                        <p>Type a keyword or click a category to instantly narrow down the tool database to what you need.</p>
+                        <span class="feature-kicker">Perimeter review</span>
+                        <h3>Map the attack surface</h3>
+                        <p>Start with Nmap, Nikto, and Gobuster to identify exposed services and content before deeper testing.</p>
                     </article>
                     <article class="feature-card">
-                        <span class="feature-kicker">Step 2</span>
-                        <h3>Review command syntax</h3>
-                        <p>Each card shows the tool name, purpose, risk level, example command, and searchable tags.</p>
+                        <span class="feature-kicker">Web application testing</span>
+                        <h3>Inspect requests and parameters</h3>
+                        <p>Use Burp Suite and sqlmap to review traffic, session handling, and input paths during an authorized assessment.</p>
                     </article>
                     <article class="feature-card">
-                        <span class="feature-kicker">Step 3</span>
-                        <h3>Copy and execute</h3>
-                        <p>Grab the command, adjust the target parameters, and run it in your terminal. Future updates will add one-click copy and execution history.</p>
+                        <span class="feature-kicker">Internal validation</span>
+                        <h3>Review windows exposure</h3>
+                        <p>Use enum4linux, Responder, John the Ripper, and Hashcat when the scope includes Windows or Samba systems.</p>
                     </article>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="site-footer"><div class="container footer-grid"><div><strong>Nexus Red Team Portal</strong><p>Searchable tool syntax preview.</p></div><div class="footer-links"><a href="report.html">Report Form</a><a href="admin-logs.html">Admin Logs</a><a href="applications.html">Applications</a></div></div></footer>
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <strong>Nexus Red Team</strong>
+                <p>Security operations dashboard for tools, findings, and awareness.</p>
+                <address>1200 Market Street, Suite 400<br>New York, NY 10018</address>
+            </div>
+            <div class="footer-columns">
+                <div class="footer-column">
+                    <span class="footer-column-title">Pages</span>
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="applications.html">Applications</a>
+                </div>
+                <div class="footer-column">
+                    <span class="footer-column-title">Operations</span>
+                    <a href="arsenal.html">Arsenal</a>
+                    <a href="report.html">Breach Report</a>
+                    <a href="phish-lab.html">Phish-Lab</a>
+                    <a href="admin-logs.html">Admin Logs</a>
+                </div>
+                <div class="footer-column">
+                    <span class="footer-column-title">Utilities</span>
+                    <a href="apps/miles-per-gallon.html">Calculator</a>
+                    <a href="apps/image-slider.html">Gallery</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container"><p class="footer-copyright">&copy; 2026 Nexus Red Team. All rights reserved.</p></div>
+        </div>
+    </footer>
     <script src="js/main.js"></script>
 </body>
 </html>

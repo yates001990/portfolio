@@ -2,7 +2,7 @@ const toolDatabase = [
     {
         name: "Nmap",
         category: "Recon",
-        use: "Network discovery, port scanning, and service enumeration across target hosts.",
+        use: "Initial perimeter sweep to map live hosts, services, and version exposure after scope approval.",
         command: "nmap -sV -Pn -oN scan.txt 10.10.10.0/24",
         tags: ["discovery", "ports", "enumeration"],
         risk: "Low"
@@ -10,7 +10,7 @@ const toolDatabase = [
     {
         name: "Gobuster",
         category: "Web",
-        use: "Brute-force hidden directories and files on web servers using wordlists.",
+        use: "Directory and file discovery on a live web application or staging target.",
         command: "gobuster dir -u https://target.site -w /usr/share/wordlists/dirb/common.txt -t 50",
         tags: ["content", "enumeration", "web"],
         risk: "Low"
@@ -18,7 +18,7 @@ const toolDatabase = [
     {
         name: "SQLMap",
         category: "Database",
-        use: "Automated detection and exploitation of SQL injection flaws in web apps.",
+        use: "Validation of a parameter suspected of SQL injection during a web assessment.",
         command: "sqlmap -u 'https://target.site/item?id=4' --batch --risk=2 --level=3 --dbs",
         tags: ["injection", "database", "audit"],
         risk: "High"
@@ -26,7 +26,7 @@ const toolDatabase = [
     {
         name: "Hydra",
         category: "Access",
-        use: "Online brute-force testing of credentials against SSH, FTP, HTTP, and other services.",
+        use: "Authorized password audit against a login form, SSH service, or other scoped endpoint.",
         command: "hydra -L users.txt -P passwords.txt ssh://10.0.0.12 -t 4",
         tags: ["auth", "passwords", "testing"],
         risk: "High"
@@ -34,7 +34,7 @@ const toolDatabase = [
     {
         name: "Burp Suite",
         category: "Web",
-        use: "Intercepting proxy for manual web application testing, request replay, and vulnerability scanning.",
+        use: "Manual web testing for request handling, cookies, session flow, and input validation.",
         command: "Proxy → Intercept → Repeater → Intruder workflow",
         tags: ["proxy", "web", "manual"],
         risk: "Medium"
@@ -42,7 +42,7 @@ const toolDatabase = [
     {
         name: "Responder",
         category: "Internal",
-        use: "LLMNR / NBT-NS poisoning and credential capture within internal networks.",
+        use: "Internal assessment of name-resolution exposure inside a sanctioned network or lab.",
         command: "sudo responder -I eth0 -dwP",
         tags: ["windows", "internal", "relay"],
         risk: "High"
@@ -50,7 +50,7 @@ const toolDatabase = [
     {
         name: "Nikto",
         category: "Web",
-        use: "Scans web servers for known misconfigurations, outdated software, and dangerous files.",
+        use: "Baseline scan of a public web server to surface outdated software and common misconfigurations.",
         command: "nikto -h https://target.site -o nikto_report.html -Format htm",
         tags: ["scanner", "web", "audit"],
         risk: "Low"
@@ -58,15 +58,15 @@ const toolDatabase = [
     {
         name: "John the Ripper",
         category: "Access",
-        use: "Offline password hash cracking supporting multiple hash types and custom rules.",
+        use: "Offline review of recovered password hashes using wordlists and targeted rules.",
         command: "john --wordlist=/usr/share/wordlists/rockyou.txt hashes.txt",
         tags: ["passwords", "cracking", "offline"],
         risk: "Medium"
     },
     {
-        name: "Metasploit",
+        name: "Metasploit Framework",
         category: "Exploitation",
-        use: "Framework for developing, testing, and executing exploits against target systems.",
+        use: "Controlled validation of a known issue in a test environment or lab.",
         command: "msfconsole → use exploit/multi/handler → set PAYLOAD → run",
         tags: ["exploit", "framework", "post-exploitation"],
         risk: "Critical"
@@ -74,7 +74,7 @@ const toolDatabase = [
     {
         name: "Wireshark",
         category: "Recon",
-        use: "Packet capture and protocol analysis for live traffic inspection and forensic review.",
+        use: "Traffic capture for incident response, troubleshooting, or protocol review.",
         command: "wireshark -i eth0 -k -Y 'http.request'",
         tags: ["traffic", "packets", "forensics"],
         risk: "Low"
@@ -82,15 +82,15 @@ const toolDatabase = [
     {
         name: "Hashcat",
         category: "Access",
-        use: "GPU-accelerated hash cracking supporting hundreds of hash algorithms.",
+        use: "GPU-based offline password audit for hashes collected during an engagement.",
         command: "hashcat -m 0 -a 0 hashes.txt /usr/share/wordlists/rockyou.txt",
         tags: ["passwords", "gpu", "cracking"],
         risk: "Medium"
     },
     {
-        name: "Enum4linux",
+        name: "enum4linux",
         category: "Recon",
-        use: "Enumerates SMB shares, users, groups, and policies from Windows/Samba systems.",
+        use: "Windows and Samba discovery to enumerate shares, users, and domain exposure.",
         command: "enum4linux -a 10.10.10.5",
         tags: ["smb", "enumeration", "windows"],
         risk: "Low"
@@ -109,13 +109,13 @@ const toolDatabase = [
 function initSite() {
     initNavigation();
     initThemeToggle();
+    initAnimatedAccordions();
     initArsenalSearch();
     initBreachReport();
     initPhishLab();
     initAdminLogs();
     initMpgCalculator();
     initImageSlider();
-    initReadinessCalculator();
     markCurrentPage();
 }
 
@@ -221,6 +221,126 @@ function markCurrentPage() {
         const href = (link.getAttribute("href") || "").split("/").pop();
         link.classList.toggle("is-active", href === current);
     }
+}
+
+function initAnimatedAccordions() {
+    const accordions = document.querySelectorAll("[data-animated-accordion]");
+
+    if (!accordions.length) {
+        return;
+    }
+
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+    const setItemState = (item, isOpen) => {
+        const summary = item.querySelector("summary");
+        item.open = isOpen;
+        item.classList.toggle("is-open", isOpen);
+        if (summary) {
+            summary.setAttribute("aria-expanded", String(isOpen));
+        }
+    };
+
+    const cleanupItem = (item) => {
+        item.style.height = "";
+        item.style.overflow = "";
+        item.dataset.animating = "false";
+        item._faqAnimation = null;
+    };
+
+    const animateItem = (item, shouldOpen) => {
+        const summary = item.querySelector("summary");
+        const body = item.querySelector(".faq-body");
+
+        if (!summary || !body) {
+            setItemState(item, shouldOpen);
+            return;
+        }
+
+        if (item._faqAnimation) {
+            item._faqAnimation.cancel();
+        }
+
+        const startHeight = item.offsetHeight;
+
+        if (shouldOpen) {
+            item.open = true;
+            item.classList.add("is-open");
+        }
+
+        const endHeight = shouldOpen ? summary.offsetHeight + body.scrollHeight : summary.offsetHeight;
+        item.style.height = startHeight + "px";
+        item.style.overflow = "hidden";
+        item.dataset.animating = "true";
+
+        const animation = item.animate(
+            [
+                { height: startHeight + "px" },
+                { height: endHeight + "px" }
+            ],
+            {
+                duration: shouldOpen ? 280 : 220,
+                easing: "cubic-bezier(0.2, 0.8, 0.2, 1)"
+            }
+        );
+
+        item._faqAnimation = animation;
+
+        animation.onfinish = () => {
+            setItemState(item, shouldOpen);
+            cleanupItem(item);
+        };
+
+        animation.oncancel = () => {
+            cleanupItem(item);
+        };
+    };
+
+    accordions.forEach((accordion) => {
+        const items = Array.from(accordion.querySelectorAll(".faq-item"));
+
+        items.forEach((item) => {
+            const summary = item.querySelector("summary");
+
+            setItemState(item, item.open);
+
+            if (!summary) {
+                return;
+            }
+
+            summary.addEventListener("click", (event) => {
+                event.preventDefault();
+
+                if (item.dataset.animating === "true") {
+                    return;
+                }
+
+                const shouldOpen = !item.open;
+
+                if (shouldOpen) {
+                    items.forEach((otherItem) => {
+                        if (otherItem === item || !otherItem.open) {
+                            return;
+                        }
+
+                        if (prefersReducedMotion.matches) {
+                            setItemState(otherItem, false);
+                            return;
+                        }
+
+                        animateItem(otherItem, false);
+                    });
+                }
+
+                if (prefersReducedMotion.matches) {
+                    setItemState(item, shouldOpen);
+                    return;
+                }
+
+                animateItem(item, shouldOpen);
+            });
+        });
+    });
 }
 
 function initArsenalSearch() {
@@ -377,12 +497,44 @@ function initAdminLogs() {
     const reportTable = document.querySelector("[data-report-table]");
     const phishTable = document.querySelector("[data-phish-table]");
     const clearButton = document.querySelector("[data-clear-logs]");
-    const reportCounts = document.querySelectorAll("[data-report-count]");
-    const phishCounts = document.querySelectorAll("[data-phish-count]");
+    const reportCount = document.querySelector("[data-report-count]");
+    const phishCount = document.querySelector("[data-phish-count]");
+    const tabs = document.querySelectorAll("[data-log-tab]");
+    const sections = document.querySelectorAll(".log-table-section");
 
     if (!reportTable || !phishTable) {
         return;
     }
+
+    /* Tab switching */
+    for (let i = 0; i < tabs.length; i += 1) {
+        tabs[i].addEventListener("click", () => {
+            const target = tabs[i].getAttribute("data-log-tab");
+            for (let j = 0; j < tabs.length; j += 1) {
+                const active = tabs[j] === tabs[i];
+                tabs[j].classList.toggle("is-active", active);
+                tabs[j].setAttribute("aria-selected", String(active));
+            }
+            for (let k = 0; k < sections.length; k += 1) {
+                sections[k].classList.toggle("is-active", sections[k].id === "log-" + target);
+            }
+        });
+    }
+
+    const sevBadgeClass = (sev) => {
+        const map = { low: "badge-low", medium: "badge-medium", high: "badge-high", critical: "badge-critical" };
+        return map[sev.trim().toLowerCase()] || "badge-medium";
+    };
+
+    const statusBadgeClass = (status) => {
+        const map = { "new": "badge-new", "in review": "badge-in-review", "validated": "badge-validated", "remediated": "badge-remediated" };
+        return map[status.trim().toLowerCase()] || "badge-new";
+    };
+
+    const emptyRow = (cols, icon, msg) => `<tr><td colspan="${cols}"><div class="log-empty-state">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">${icon}</svg>
+        <p>${msg}</p>
+    </div></td></tr>`;
 
     const render = () => {
         const reports = readStorage("nexusReports");
@@ -393,28 +545,39 @@ function initAdminLogs() {
                 <td>${item.date}</td>
                 <td>${item.client}</td>
                 <td>${item.title}</td>
-                <td>${item.severity}</td>
-                <td>${item.status}</td>
+                <td><span class="badge ${sevBadgeClass(item.severity)}">${item.severity}</span></td>
+                <td><span class="badge ${statusBadgeClass(item.status)}">${item.status}</span></td>
                 <td>${item.affected}</td>
             </tr>
-        `).join("") : '<tr><td colspan="6" class="muted">No breach reports stored yet. Submit one from the <a href="report.html">Breach Report</a> page.</td></tr>';
+        `).join("") : emptyRow(6,
+            '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/>',
+            "No breach findings logged yet. Submit a report through the Breach Report page."
+        );
+
+        const actionBadge = (action) => {
+            const isClick = action.toLowerCase().includes("click");
+            return `<span class="badge ${isClick ? "badge-clicked" : "badge-reported"}">${isClick ? "Clicked link" : "Reported"}</span>`;
+        };
 
         phishTable.innerHTML = phishLogs.length ? phishLogs.map((item) => `
             <tr>
                 <td>${item.date}</td>
                 <td>${item.user}</td>
                 <td>${item.department}</td>
-                <td>${item.action}</td>
+                <td>${actionBadge(item.action)}</td>
                 <td>${item.notes}</td>
             </tr>
-        `).join("") : '<tr><td colspan="5" class="muted">No Phish-Lab activity stored yet. Visit <a href="phish-lab.html">Phish-Lab</a> to generate events.</td></tr>';
+        `).join("") : emptyRow(5,
+            '<path d="M4 7h16v10H4z"/><path d="M4 8l8 5 8-5"/>',
+            "No awareness responses recorded yet. Activity from the Phish-Lab appears here."
+        );
 
-        for (let i = 0; i < reportCounts.length; i += 1) {
-            reportCounts[i].textContent = String(reports.length);
+        if (reportCount) {
+            reportCount.textContent = String(reports.length);
         }
 
-        for (let i = 0; i < phishCounts.length; i += 1) {
-            phishCounts[i].textContent = String(phishLogs.length);
+        if (phishCount) {
+            phishCount.textContent = String(phishLogs.length);
         }
     };
 
@@ -487,7 +650,9 @@ function initImageSlider() {
         }
 
         for (let thumbIndex = 0; thumbIndex < thumbs.length; thumbIndex += 1) {
-            thumbs[thumbIndex].classList.toggle("is-active", thumbIndex === currentIndex);
+            const isActive = thumbIndex === currentIndex;
+            thumbs[thumbIndex].classList.toggle("is-active", isActive);
+            thumbs[thumbIndex].setAttribute("aria-pressed", String(isActive));
         }
 
         if (status) {
@@ -525,39 +690,6 @@ function initImageSlider() {
 
     showSlide(0);
     startAutoPlay();
-}
-
-function initReadinessCalculator() {
-    const form = document.querySelector("[data-readiness-form]");
-    const result = document.querySelector("[data-readiness-result]");
-
-    if (!form || !result) {
-        return;
-    }
-
-    form.addEventListener("submit", (event) => {
-        event.preventDefault();
-        let total = 0;
-        const values = Array.from(form.querySelectorAll("select")).map((select) => Number(select.value));
-
-        for (let index = 0; index < values.length; index += 1) {
-            total += values[index];
-        }
-
-        const percentage = Math.round((total / (values.length * 5)) * 100);
-        const tier = percentage >= 80 ? "Ready" : percentage >= 60 ? "Improving" : "Needs work";
-
-        result.innerHTML = `
-            <div class="readiness-result">
-                <span class="readiness-score">${percentage}%</span>
-                <span class="app-value-label">Readiness score</span>
-            </div>
-            <div class="readiness-result">
-                <span class="readiness-score">${tier}</span>
-                <span class="app-value-label">Assessment tier</span>
-            </div>
-        `;
-    });
 }
 
 function readStorage(key) {

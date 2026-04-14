@@ -22,7 +22,7 @@
                 <span></span><span></span><span></span>
             </button>
             <nav class="site-nav" id="siteNav" aria-label="Primary">
-                <a href="index.html">Dashboard</a>
+                <a href="index.html">Home</a>
                 <a href="about.html">About</a>
                 <div class="nav-dropdown">
                     <button class="nav-dropdown-toggle" type="button" aria-expanded="false">
@@ -47,46 +47,106 @@
             <div class="container two-column">
                 <div>
                     <p class="eyebrow">Breach Report</p>
-                    <h1>Log vulnerability findings for tracking and remediation.</h1>
-                    <p class="lead">Security teams use intake forms like this to standardize how findings are documented. Each submission captures severity, affected assets, and status, creating an audit trail that flows into Admin Logs.</p>
+                    <h1>Log a finding and track its status.</h1>
+                    <p class="lead">Fill in the details below to record a vulnerability, assign a severity level, and keep the next step visible.</p>
                 </div>
-                <div class="status-panel">
-                    <div class="metric-card"><span class="mini-label">Severity Levels</span><strong>Low → Critical</strong><p>Classify findings by impact to prioritize remediation efforts across the engagement.</p></div>
-                    <div class="metric-card"><span class="mini-label">Tracking Status</span><strong>New → Remediated</strong><p>Each finding moves through a lifecycle: New, In Review, Validated, and Remediated.</p></div>
+                <div>
+                    <p class="panel-label" style="margin-bottom:0.85rem">Severity reference</p>
+                    <div class="report-severity-guide">
+                        <div class="sev-entry">
+                            <span class="sev-dot sev-dot-low"></span>
+                            <div><strong>Low</strong><span>Minimal impact, low exploitability</span></div>
+                        </div>
+                        <div class="sev-entry">
+                            <span class="sev-dot sev-dot-medium"></span>
+                            <div><strong>Medium</strong><span>Requires conditions to exploit</span></div>
+                        </div>
+                        <div class="sev-entry">
+                            <span class="sev-dot sev-dot-high"></span>
+                            <div><strong>High</strong><span>Direct risk, exploit likely</span></div>
+                        </div>
+                        <div class="sev-entry">
+                            <span class="sev-dot sev-dot-critical"></span>
+                            <div><strong>Critical</strong><span>Immediate action required</span></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
         <section class="section">
-            <div class="container two-column">
-                <div class="form-card">
+            <div class="container">
+                <div class="form-card" style="max-width:860px">
                     <h2>Submit Finding</h2>
-                    <p>Document a discovered vulnerability. Fields are structured to map directly to a backend database for long-term tracking.</p>
+                    <p>Document the issue, the affected asset, and the next action required.</p>
                     <form class="form-grid" data-breach-form>
+                        <span class="form-section-divider">Engagement details</span>
                         <div class="form-field"><label for="client">Client / Target</label><input id="client" name="client" type="text" placeholder="Acme Retail Corp"></div>
                         <div class="form-field"><label for="contact">Contact Email</label><input id="contact" name="contact" type="email" placeholder="security@acmeretail.com"></div>
-                        <div class="form-field"><label for="title">Finding Title</label><input id="title" name="title" type="text" placeholder="Exposed admin panel on subdomain"></div>
-                        <div class="form-field"><label for="severity">Severity</label><select id="severity" name="severity"><option>Low</option><option>Medium</option><option selected>High</option><option>Critical</option></select></div>
-                        <div class="form-field"><label for="status">Status</label><select id="status" name="status"><option selected>New</option><option>In Review</option><option>Validated</option><option>Remediated</option></select></div>
+
+                        <span class="form-section-divider">Finding details</span>
+                        <div class="form-field full"><label for="title">Finding Title</label><input id="title" name="title" type="text" placeholder="Exposed admin panel on subdomain"></div>
                         <div class="form-field"><label for="affected">Affected Asset</label><input id="affected" name="affected" type="text" placeholder="portal.acmeretail.com/admin"></div>
-                        <div class="form-field full"><label for="summary">Summary &amp; Recommendation</label><textarea id="summary" name="summary" placeholder="Describe the vulnerability, its potential impact, and the recommended remediation step. Example: The admin panel at /admin is publicly accessible without authentication. Recommend restricting access by IP whitelist and adding MFA."></textarea></div>
-                        <div class="form-field full"><button class="button button-primary" type="submit">Log Finding</button></div>
+                        <div class="form-field"><label for="severity">Severity</label>
+                            <select id="severity" name="severity">
+                                <option>Low</option>
+                                <option>Medium</option>
+                                <option selected>High</option>
+                                <option>Critical</option>
+                            </select>
+                        </div>
+                        <div class="form-field"><label for="status">Status</label>
+                            <select id="status" name="status">
+                                <option selected>New</option>
+                                <option>In Review</option>
+                                <option>Validated</option>
+                                <option>Remediated</option>
+                            </select>
+                        </div>
+
+                        <span class="form-section-divider">Summary</span>
+                        <div class="form-field full"><label for="summary">Summary &amp; Recommendation</label><textarea id="summary" name="summary" placeholder="Describe what you found and what should happen next. Example: The admin panel at /admin is publicly accessible without authentication. Restrict access and require MFA."></textarea></div>
+                        <div class="form-field full"><button class="button button-primary" type="submit" style="width:100%;justify-content:center">Log Finding</button></div>
                     </form>
                     <div data-breach-message></div>
-                </div>
-                <div class="results-panel">
-                    <h2>Report Workflow</h2>
-                    <div class="results-list">
-                        <article class="table-card"><span>Step 1</span><h3>Document the finding</h3><p>Fill in the client, severity, affected asset, and a clear summary with recommended next steps.</p></article>
-                        <article class="table-card"><span>Step 2</span><h3>Entry is stored securely</h3><p>Each submission is saved and queued for review. In the full deployment, this data flows into a SQL database for permanent retention.</p></article>
-                        <article class="table-card"><span>Step 3</span><h3>Review in Admin Logs</h3><p>Navigate to Admin Logs to see all submitted findings in a sortable table, the same view an engagement lead would use.</p></article>
-                    </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer class="site-footer"><div class="container footer-grid"><div><strong>Nexus Red Team Portal</strong><p>Vulnerability reporting and tracking.</p></div><div class="footer-links"><a href="admin-logs.html">Open Admin Logs</a><a href="arsenal.html">Open Arsenal</a><a href="contact.html">Contact</a></div></div></footer>
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <strong>Nexus Red Team</strong>
+                <p>Security operations dashboard for tools, findings, and awareness.</p>
+                <address>1200 Market Street, Suite 400<br>New York, NY 10018</address>
+            </div>
+            <div class="footer-columns">
+                <div class="footer-column">
+                    <span class="footer-column-title">Pages</span>
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="applications.html">Applications</a>
+                </div>
+                <div class="footer-column">
+                    <span class="footer-column-title">Operations</span>
+                    <a href="arsenal.html">Arsenal</a>
+                    <a href="report.html">Breach Report</a>
+                    <a href="phish-lab.html">Phish-Lab</a>
+                    <a href="admin-logs.html">Admin Logs</a>
+                </div>
+                <div class="footer-column">
+                    <span class="footer-column-title">Utilities</span>
+                    <a href="apps/miles-per-gallon.html">Calculator</a>
+                    <a href="apps/image-slider.html">Gallery</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container"><p class="footer-copyright">&copy; 2026 Nexus Red Team. All rights reserved.</p></div>
+        </div>
+    </footer>
     <script src="js/main.js"></script>
 </body>
 </html>
